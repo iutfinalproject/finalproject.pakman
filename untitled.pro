@@ -20,7 +20,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    brick.cpp
+    brick.cpp \
+    human.cpp \
+    creature.cpp \
+    key.cpp \
+    score.cpp \
+    health.cpp
 
     brick.cpp
 
@@ -28,9 +33,14 @@ SOURCES += main.cpp \
 
 HEADERS += \
     brick.h \
-    addbrick.h \
     creature.h \
-    human.h
+    human.h \
+    addbrick2.h \
+    key.h \
+    addkey2.h \
+    score.h \
+    health.h \
+    addbrick1.h
 
 RESOURCES += \
     resorce.qrc
