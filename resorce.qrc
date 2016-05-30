@@ -1,9 +1,6 @@
 <RCC>
     <qresource prefix="/image">
-        <file>background2</file>
-        <file>brick2</file>
-        <file>key2</file>
-        <file>background1</file>
-        <file>brick1</file>
+        <file>background</file>
+        <file>brickww</file>
     </qresource>
 </RCC>

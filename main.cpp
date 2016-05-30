@@ -1,100 +1,53 @@
+#include"brick.h"
+#include"addbrick_scene1.h"
+#include"addbrick_scene2.h"
 #include <QApplication>
 #include <QGraphicsView>
 #include<QGraphicsScene>
-#include <QApplication>
 #include<QImage>
 #include<QDesktopWidget>
-#include<QGraphicsPixmapItem>
-#include "brick.h"
-#include"addBrick2.h"
-#include"addbrick1.h"
-#include<QPixmap>
+#include<qdebug.h>
 int main(int argc, char *argv[])
 {
 
-
+    int flag=1;
     QApplication a(argc, argv);
-
-    int numScene=1;
-
     QGraphicsScene *scene1=new QGraphicsScene();
-    QImage background1("://image/background1");
-
     QGraphicsScene *scene2=new QGraphicsScene();
-    QImage background2("://image/background2");
-
-
     QGraphicsScene *scene3=new QGraphicsScene();
-    QImage background3("://image/background3");
+    QGraphicsView *view=new QGraphicsView();
 
-    if(numScene==1){
-        QGraphicsView *view=new QGraphicsView(scene1);
+    QDesktopWidget desktop;
+    int desktopHight=desktop.geometry().height();
+    int desktopWidth=desktop.geometry().width();
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setFixedSize(desktopWidth,desktopHight);
+if(flag==1){
 
-
-        QDesktopWidget desktop;
-        int desktopHeight=desktop.geometry().height();
-        int desktopWidth=desktop.geometry().width();
-        view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        view->setFixedSize(desktopWidth,desktopHeight);
-        scene1->setSceneRect(0,0,desktopWidth,desktopHeight);
-
-        scene1->setBackgroundBrush(background1.scaled(desktopWidth,desktopHeight));
-      //  addbrick1(scene1);
-
-        view->show();
-
+    scene1->setSceneRect(0,0,desktopWidth,desktopHight);
+    QImage background1(":/image/scene1.jpg");
+    scene1->setBackgroundBrush(background1.scaled(desktopWidth,desktopHight));
+    addbrick(scene1);
+    view->setScene(scene1);
+}
+else if(flag==2){
+    scene2->setSceneRect(0,0,desktopWidth,desktopHight);
+    QImage background2(":/image/scene2.jpg");
+    scene2->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
+    addbrick2(scene2);
+    view->setScene(scene2);
+}
+else if(flag==3){
+    scene3->setSceneRect(0,0,desktopWidth,desktopHight);
+    QImage background3(":/image/scene3.jpg");
+    scene3->setBackgroundBrush(background3.scaled(desktopWidth,desktopHight));
+    addbrick(scene3);
+        view->setScene(scene3);
     }
 
 
-
-    if(numScene==2){
-         QGraphicsView *view=new QGraphicsView(scene2);
-
-        QDesktopWidget desktop;
-        int desktopHeight=desktop.geometry().height();
-        int desktopWidth=desktop.geometry().width();
-        view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        view->setFixedSize(desktopWidth,desktopHeight);
-        scene2->setSceneRect(0,0,desktopWidth,desktopHeight);
-
-
-
-     scene2->setBackgroundBrush(background2.scaled(desktopWidth,desktopHeight));
-     addbrick2(scene2);
-       view->show();
-    }
-
-
-
-
-    if(numScene==3){
-         QGraphicsView *view=new QGraphicsView(scene3);
-
-        QDesktopWidget desktop;
-        int desktopHeight=desktop.geometry().height();
-        int desktopWidth=desktop.geometry().width();
-        view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        view->setFixedSize(desktopWidth,desktopHeight);
-        scene3->setSceneRect(0,0,desktopWidth,desktopHeight);
-
-
-       view->show();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+    view->show();
 
     return a.exec();
 }

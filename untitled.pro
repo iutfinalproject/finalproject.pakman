@@ -1,47 +1,24 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-05-29T00:42:23
+# Project created by QtCreator 2016-05-29T12:48:41
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui
 
-
-
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = untitled
-
-
-
 TEMPLATE = app
 
 
-
-
-
 SOURCES += main.cpp \
-    brick.cpp \
-    human.cpp \
-    creature.cpp \
-    key.cpp \
-    score.cpp \
-    health.cpp
-
     brick.cpp
 
-
-
-HEADERS += \
+HEADERS  += \
     brick.h \
-    creature.h \
-    human.h \
-    addbrick2.h \
-    key.h \
-    addkey2.h \
-    score.h \
-    health.h \
-    addbrick1.h
+    addbrick_scene1.h \
+    addbrick_scene2.h
 
 RESOURCES += \
-    resorce.qrc
-
+    res.qrc
