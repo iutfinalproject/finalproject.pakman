@@ -12,7 +12,7 @@ void addbrick(QGraphicsScene* scene){
 //****************************************************************************
 
    brick * brick_y[15];
-   int y =0;
+   float y =0;
    for(int i=0;i<15;i++){
         brick_y[i]=new brick(2,desktopHight,desktopWidth);
         brick_y[i]->setpos_(0,y );
@@ -22,7 +22,7 @@ void addbrick(QGraphicsScene* scene){
 
 
    brick * brick_x[20];
-   int x=0;
+   float x=0;
    for(int i=0;i<20;i++){
         brick_x[i]=new brick(2,desktopHight,desktopWidth);
          brick_x[i]->setpos_(x,0 );
@@ -31,7 +31,7 @@ void addbrick(QGraphicsScene* scene){
    }
 
    brick * brick_y_end[15];
-   int y_end =0;
+   float y_end =0;
    for(int i=0;i<15;i++){
         brick_y_end[i]=new brick(2,desktopHight,desktopWidth);
         brick_y_end[i]->setpos_(desktopWidth-(desktopWidth/20),y_end);
@@ -41,7 +41,7 @@ void addbrick(QGraphicsScene* scene){
 
 
    brick * brick_x_end[20];
-   int x_end=0;
+   float x_end=0;
    for(int i=0;i<20;i++){
         brick_x_end[i]=new brick(2,desktopHight,desktopWidth);
         brick_x_end[i]->setpos_(x_end,desktopHight-(desktopHight/15) );
@@ -51,7 +51,7 @@ void addbrick(QGraphicsScene* scene){
 
 
 //***************************************************************************************************
-   int x_midlle1=(desktopWidth/20)*2;//----------
+   float x_midlle1=(desktopWidth/20)*2;//----------
    brick * brick_midlle1[8];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<8;i++){
        brick_midlle1[i]=new brick(2,desktopHight,desktopWidth);
@@ -61,7 +61,7 @@ void addbrick(QGraphicsScene* scene){
    }
 
  //*************************************************************************************************
-   int x_midlle2=(desktopWidth/20)*12;//-----------
+   float x_midlle2=(desktopWidth/20)*12;//-----------
    brick * brick_midlle2[5];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<5;i++){
        brick_midlle2[i]=new brick(2,desktopHight,desktopWidth);
@@ -71,7 +71,7 @@ void addbrick(QGraphicsScene* scene){
    }
 
 //**************************************************************************************************
-   int y_midlle3=desktopHight-(desktopHight/15)*4;
+   float y_midlle3=desktopHight-(desktopHight/15)*4;
    brick * brick_midlle3[5];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<5;i++){
        brick_midlle3[i]=new brick(2,desktopHight,desktopWidth);
@@ -80,7 +80,7 @@ void addbrick(QGraphicsScene* scene){
       scene->addItem(brick_midlle3[i]);
    }
 //***************************************************************************************************
-   int x_midlle4=(desktopWidth/20)*3;
+   float x_midlle4=(desktopWidth/20)*3;
    brick * brick_midlle4[5];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<5;i++){
        brick_midlle4[i]=new brick(2,desktopHight,desktopWidth);
@@ -90,7 +90,7 @@ void addbrick(QGraphicsScene* scene){
    }
 //***************************************************************************************************
 
-   int y_midlle5=desktopHight-(desktopHight/15)*4;
+   float y_midlle5=desktopHight-(desktopHight/15)*4;
    brick * brick_midlle5[9];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<9;i++){
        brick_midlle5[i]=new brick(2,desktopHight,desktopWidth);
@@ -101,8 +101,8 @@ void addbrick(QGraphicsScene* scene){
 //*****************************************************************************************************
 
 
-   int y_midlle6=desktopHight-(desktopHight/15)*9;
-   int x_midlle6=(desktopWidth/20)*2.5;
+   float y_midlle6=desktopHight-(desktopHight/15)*9;
+   float x_midlle6=(desktopWidth/20)*2.5;
    brick * brick_midlle6[9];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<3;i++){
        y_midlle6=desktopHight-(desktopHight/15)*9;
@@ -116,7 +116,7 @@ void addbrick(QGraphicsScene* scene){
    }
 //****************************************************************************************************
 
-   int x_midlle7=(desktopWidth/20)*4.75;
+   float x_midlle7=(desktopWidth/20)*4.75;
    brick * brick_midlle7[8];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<8;i++){
        brick_midlle7[i]=new brick(2,desktopHight,desktopWidth);
@@ -127,11 +127,11 @@ void addbrick(QGraphicsScene* scene){
 //****************************************************************************************************
 
 
-   int y_midlle8=desktopHight-(desktopHight/15)*5;
-   int x_midlle8=(desktopWidth/20)*9;
+   float y_midlle8=desktopHight-(desktopHight/15)*5.25;
+   float x_midlle8=(desktopWidth/20)*9;
    brick * brick_midlle8[8];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<2;i++){
-       y_midlle8=desktopHight-(desktopHight/15)*5;
+       y_midlle8=desktopHight-(desktopHight/15)*5.25;
        x_midlle8+=desktopWidth/20;
        for(int j=0;j<4;j++){
           brick_midlle8[i]=new brick(2,desktopHight,desktopWidth);
@@ -141,8 +141,8 @@ void addbrick(QGraphicsScene* scene){
        }
    }
 //****************************************************************************************************
-   int y_midlle9=desktopHight-(desktopHight/15)*11.75;
-   int x_midlle9=(desktopWidth/20)*13;
+  float y_midlle9=desktopHight-(desktopHight/15)*11.75;
+   float x_midlle9=(desktopWidth/20)*13;
    brick * brick_midlle9[8];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<4;i++){
        y_midlle9=desktopHight-(desktopHight/15)*11.75;
@@ -155,7 +155,7 @@ void addbrick(QGraphicsScene* scene){
        }
    }
 //***************************************************************************************************
-   int x_midlle10=(desktopWidth/20)*2;
+   float x_midlle10=(desktopWidth/20)*2;
    brick * brick_midlle10[10];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<10;i++){
        brick_midlle10[i]=new brick(2,desktopHight,desktopWidth);
@@ -165,8 +165,8 @@ void addbrick(QGraphicsScene* scene){
    }
 //***************************************************************************************************
 
-   int y_midlle11=desktopHight-(desktopHight/15)*4;
-   int x_midlle11=(desktopWidth/20)*15.25;
+   float y_midlle11=desktopHight-(desktopHight/15)*4;
+   float x_midlle11=(desktopWidth/20)*15.25;
    brick * brick_midlle11[4];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<2;i++){
        y_midlle11=desktopHight-(desktopHight/15)*4;
@@ -179,7 +179,7 @@ void addbrick(QGraphicsScene* scene){
        }
    }
 //***********************************************************************************************
-   int x_midlle12=(desktopWidth/20)*6.5;
+   float x_midlle12=(desktopWidth/20)*6.5;
    brick * brick_midlle12[6];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<6;i++){
        brick_midlle12[i]=new brick(2,desktopHight,desktopWidth);
@@ -189,7 +189,7 @@ void addbrick(QGraphicsScene* scene){
    }
 //*************************************************************************************************
 
-   int y_midlle13=desktopHight-(desktopHight/15)*4;
+   float y_midlle13=desktopHight-(desktopHight/15)*4;
    brick * brick_midlle13[9];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<9;i++){
        brick_midlle13[i]=new brick(2,desktopHight,desktopWidth);
@@ -199,7 +199,7 @@ void addbrick(QGraphicsScene* scene){
    }
 //************************************************************************************************
 
-   int x_midlle14=(desktopWidth/20)*14.5;
+   float x_midlle14=(desktopWidth/20)*14.5;
    brick * brick_midlle14[3];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<3;i++){
        brick_midlle14[i]=new brick(2,desktopHight,desktopWidth);
@@ -208,7 +208,7 @@ void addbrick(QGraphicsScene* scene){
       scene->addItem(brick_midlle14[i]);
    }
 //************************************************************************************************
-   int x_midlle15=(desktopWidth/20)*14.5;
+   float x_midlle15=(desktopWidth/20)*14.5;
    brick * brick_midlle15[3];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<3;i++){
        brick_midlle15[i]=new brick(2,desktopHight,desktopWidth);
@@ -217,13 +217,13 @@ void addbrick(QGraphicsScene* scene){
       scene->addItem(brick_midlle15[i]);
    }
 //*************************************************************************************************
-   int x_midlle16=(desktopWidth/20)*9.5;
+  /* int x_midlle16=(desktopWidth/20)*9.5;
    brick * brick_midlle16[3];//=new brick(2,desktopHight,desktopWidth);
    for(int i=0;i<3;i++){
        brick_midlle16[i]=new brick(2,desktopHight,desktopWidth);
        x_midlle16+=desktopWidth/20;
       brick_midlle16[i]->setpos_(x_midlle16,desktopHight-(desktopHight/15)*9);
       scene->addItem(brick_midlle16[i]);
-   }
+   }*/
 }
 #endif // ADDBRICK_H

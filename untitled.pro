@@ -28,7 +28,9 @@ SOURCES += main.cpp \
 
 HEADERS += \
     brick.h \
-    addbrick.h
+    addbrick.h \
+    creature.h \
+    human.h
 
 RESOURCES += \
     resorce.qrc

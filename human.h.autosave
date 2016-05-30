@@ -1,0 +1,8 @@
+#ifndef HUMAN_H
+#define HUMAN_H
+#include"creature.h"
+class human:public creature{
+
+
+};
+#endif // HUMAN_H
