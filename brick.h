@@ -1,18 +1,30 @@
 #ifndef BRICK_H
 #define BRICK_H
 
-#include<QGraphicsItem>
-#include<QGraphicsPixmapItem>
 #include <QObject>
-#include<QGraphicsScene>
-class brick1:public QObject,public QGraphicsPixmapItem{
-     Q_OBJECT
+
+
+
+#include<QGraphicsPixmapItem>
+#include<QGraphicsItem>
+
+class brick : public QObject,public QGraphicsPixmapItem
+{
+    Q_OBJECT
 public:
-     brick1(QGraphicsPixmapItem *parent1 = 0);
+    explicit brick(int ,int,int,QGraphicsPixmapItem *parent = 0);
      void setpos_(int,int);
 
+
+signals:
+
+public slots:
 private:
-    QGraphicsPixmapItem * p_brike;
+
+     QPixmap*brick_img;
+
 
 };
+
+
 #endif // BRICK_H

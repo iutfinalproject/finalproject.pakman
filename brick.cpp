@@ -1,15 +1,20 @@
+#include<QGraphicsScene>
 #include "brick.h"
-#include <QGraphicsScene>
-brick1::brick1(QGraphicsPixmapItem *parent1):QObject(),QGraphicsPixmapItem(parent1)
+
+brick::brick(int img_id,int _h,int _w,QGraphicsPixmapItem *parent):QObject(),QGraphicsPixmapItem(parent)
 {
 
-    setPixmap(QPixmap("://image/brick1.jpg"));
-}
 
-void brick1::setpos_(int x, int y)
+
+ brick_img=new QPixmap("://image/brick2");
+ * brick_img= brick_img->scaled(_w/20,(_h/15));
+ setPixmap(* brick_img);
+
+
+}
+void brick::setpos_(int x, int y)
 {
     this->setPos(x,y);
-
 }
 
 
