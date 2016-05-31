@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/image">
-        <file>scene1.jpg</file>
-        <file>brick2.jpg</file>
-        <file>scene3.jpg</file>
         <file>brick1.jpg</file>
+        <file>brick2.jpg</file>
+        <file>brick3.jpg</file>
+        <file>bridge.jpg</file>
+        <file>scene1.jpg</file>
+        <file>scene2.jpg</file>
+        <file>scene3.jpg</file>
     </qresource>
 </RCC>
