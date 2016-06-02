@@ -15,7 +15,7 @@ public:
 private:
     QGraphicsScene* scene;
     int id;
-    
+
 };
 
 #endif // BACKGROUND_H

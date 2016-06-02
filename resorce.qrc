@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>background2</file>
+        <file>brick2</file>
+        <file>background1</file>
+        <file>brick1</file>
+        <file>keyrotate</file>
+        <file>key1</file>
+        <file>key2</file>
+        <file>key3</file>
+        <file>key4</file>
+        <file>key5</file>
+        <file>key6</file>
+        <file>back1</file>
+        <file>brickbrick1</file>
+        <file>brickbrick2</file>
+        <file>brickbrick3</file>
+        <file>brickbrick4</file>
+        <file>brickbrick5</file>
+    </qresource>
+    <qresource prefix="/movie">
+        <file>keymovie</file>
+    </qresource>
+</RCC>

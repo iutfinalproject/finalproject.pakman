@@ -5,7 +5,9 @@
 #include<QImage>
 #include<QDesktopWidget>
 #include<qdebug.h>
+#include"key.h"
 #include"background.h"
+#include<QTimer>
 int main(int argc, char *argv[])
 {
 
@@ -33,10 +35,17 @@ if(flag==1){
 }
 else if(flag==2){
     scene2->setSceneRect(0,0,desktopWidth,desktopHight);
-    QImage background2(":/image/scene2.jpg");
+    QImage background2(":/image/back1");
     scene2->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
     background mybackground(0,scene2,2);
     mybackground.addbrick();
+
+  //  key *KEY=new key(2);
+   // KEY->setFlag(QGraphicsItem::ItemIsFocusable);
+   // KEY->setFocus();
+   // KEY->setpos_(400,200);
+
+   // scene2->addItem(KEY);
     view->setScene(scene2);
 }
 else if(flag==3){

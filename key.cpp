@@ -1,17 +1,63 @@
 #include "key.h"
+#include<QSize>
+#include<QRect>
+#include<QDebug>
+
 
 key::key(int img_id,QGraphicsPixmapItem *parent):QObject(),QGraphicsPixmapItem(parent)
 {
+    flag=1;
     img_id=2;
         if(img_id==2){
-             key_img=new QPixmap("://image/key2");
-           // * brick_img= brick_img->scaled(_w/20,(_h/15));
-             setPixmap(* key_img);
-        }
+             key_img1=new QPixmap("://image/key1");
+              key_img2=new QPixmap("://image/key2");
+               key_img3=new QPixmap("://image/key3");
+                key_img4=new QPixmap("://image/key4");
+                 key_img5=new QPixmap("://image/key5");
+                  key_img6=new QPixmap("://image/key6");
 
-}
+           * key_img1= key_img1->scaled(50,50);
+           * key_img2= key_img2->scaled(50,50);
+           * key_img3= key_img3->scaled(50,50);
+           * key_img4= key_img4->scaled(50,50);
+           * key_img5= key_img5->scaled(50,50);
+           * key_img6= key_img6->scaled(50,50);
+
+             setPixmap(*key_img1);
+
+             qDebug()<<"***********************";
+        }
+      key_timer=new QTimer();
+     key_timer->start(100);
+     connect(key_timer,SIGNAL(timeout()),this,SLOT(rotate_img()));
+     }
 
 void key::setpos_(int x, int y)
 {
     this->setPos(x,y);
+}
+
+void key::rotate_img()
+{
+    flag++;
+   if(flag==1){
+         setPixmap(*key_img1);
+    }
+   if(flag==2){
+         setPixmap(*key_img2);
+    }
+   if(flag==3){
+         setPixmap(*key_img3);
+    }
+   if(flag==4){
+         setPixmap(*key_img4);
+    }
+   if(flag==5){
+         setPixmap(*key_img5);
+    }
+   if(flag==6){
+         setPixmap(*key_img6);
+    }
+   if(flag==6)
+     flag=0;
 }

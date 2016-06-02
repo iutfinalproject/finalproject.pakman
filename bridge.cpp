@@ -1,3 +1,4 @@
+
 #include "bridge.h"
 
 
@@ -8,4 +9,3 @@ bridge::bridge(int h,int w,QGraphicsPixmapItem *parent) :QObject(),QGraphicsPixm
     setPixmap(*mybridge);
 
 }
-
