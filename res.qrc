@@ -1,11 +1,25 @@
 <RCC>
     <qresource prefix="/image">
-        <file>brick1.jpg</file>
-        <file>brick2.jpg</file>
-        <file>brick3.jpg</file>
         <file>bridge.jpg</file>
         <file>scene1.jpg</file>
         <file>scene2.jpg</file>
         <file>scene3.jpg</file>
+        <file>brick1.jpg</file>
+        <file>brick2.jpg</file>
+        <file>brick3.jpg</file>
+        <file>d1.png</file>
+        <file>d2.png</file>
+        <file>d3.png</file>
+        <file>d4.png</file>
+        <file>d5.png</file>
+        <file>d6.png</file>
+        <file>d7.png</file>
+        <file>d11.png</file>
+        <file>d22.png</file>
+        <file>d33.png</file>
+        <file>d44.png</file>
+        <file>d55.png</file>
+        <file>d66.png</file>
+        <file>d77.png</file>
     </qresource>
 </RCC>

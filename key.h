@@ -14,7 +14,7 @@ public:
      void setpos_(int,int);
 
 signals:
-    
+
 public slots:
      void rotate_img();
 private:
@@ -27,7 +27,7 @@ private:
      QPixmap*key_img6;
 
      int flag;
-    
+
 };
 
 #endif // KEY_H

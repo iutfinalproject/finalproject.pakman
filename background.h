@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QGraphicsScene>
 
+
 class background : public QObject
 {
     Q_OBJECT
@@ -15,6 +16,8 @@ public:
 private:
     QGraphicsScene* scene;
     int id;
+    int desktopHight;
+    int desktopWidth;
 
 };
 
