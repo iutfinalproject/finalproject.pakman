@@ -5,8 +5,8 @@
 #include<bridge.h>
 #include<QDebug>
 #include"key.h"
-#include"destroyer.h"
-
+#include"verticaldestroyer1.h"
+#include"horizontaldestroyer1.h"
 
 
 background::background(QObject *parent, QGraphicsScene* nowscene, int nowid) :
@@ -650,94 +650,8 @@ void background::addkey(){
 
 
     }
-    if(id==2){
-        qDebug()<<"...............hi................";
+    else if(id==2){
 
-        key *KEY[22];
-        KEY[1]=new key(2);
-        KEY[1]->setpos_(180,200);
-        scene->addItem(KEY[1]);
-
-
-        KEY[2]=new key(2);
-        KEY[2]->setpos_(450,200);
-        scene->addItem(KEY[2]);
-
-        KEY[3]=new key(2);
-        KEY[3]->setpos_(300,50);
-        scene->addItem(KEY[3]);
-
-        KEY[4]=new key(2);
-        KEY[4]->setpos_(500,450);
-        scene->addItem(KEY[4]);
-
-        KEY[5]=new key(2);
-        KEY[5]->setpos_(600,565);
-        scene->addItem(KEY[5]);
-
-        KEY[6]=new key(2);
-        KEY[6]->setpos_(800,600);
-        scene->addItem(KEY[6]);
-
-        KEY[7]=new key(2);
-        KEY[7]->setpos_(200,500);
-        scene->addItem(KEY[7]);
-
-        KEY[8]=new key(2);
-        KEY[8]->setpos_(120,600);
-        scene->addItem(KEY[8]);
-
-        KEY[9]=new key(2);
-        KEY[9]->setpos_(500,670);
-        scene->addItem(KEY[9]);
-
-        KEY[10]=new key(2);
-        KEY[10]->setpos_(800,270);
-        scene->addItem(KEY[10]);
-
-        KEY[11]=new key(2);
-        KEY[11]->setpos_(900,400);
-        scene->addItem(KEY[11]);
-
-        KEY[12]=new key(2);
-        KEY[12]->setpos_(1052,500);
-        scene->addItem(KEY[12]);
-
-        KEY[13]=new key(2);
-        KEY[13]->setpos_(1100,200);
-        scene->addItem(KEY[13]);
-
-        KEY[14]=new key(2);
-        KEY[14]->setpos_(1150,440);
-        scene->addItem(KEY[14]);
-
-        KEY[15]=new key(2);
-        KEY[15]->setpos_(1150,338);
-        scene->addItem(KEY[15]);
-
-        KEY[16]=new key(2);
-        KEY[16]->setpos_(1100,670);
-        scene->addItem(KEY[16]);
-
-        KEY[17]=new key(2);
-        KEY[17]->setpos_(300,670);
-        scene->addItem(KEY[17]);
-
-        KEY[18]=new key(2);
-        KEY[18]->setpos_(100,50);
-        scene->addItem(KEY[18]);
-
-        KEY[19]=new key(2);
-        KEY[19]->setpos_(800,50);
-        scene->addItem(KEY[19]);
-
-        KEY[20]=new key(2);
-        KEY[20]->setpos_(500,300);
-        scene->addItem(KEY[20]);
-
-        KEY[21]=new key(2);
-        KEY[21]->setpos_(1100,50);
-        scene->addItem(KEY[21]);
 
 
      }
@@ -746,7 +660,14 @@ void background::addkey(){
 
 
 
-    if(id==3){
+    else if(id==3){
+        key *KEY[22];
+                 KEY[1]=new key();
+                 KEY[1]->setpos_((desktopWidth/20)*2.75,desktopHight-(desktopHight/15)*10);
+                scene->addItem(KEY[1]);
+
+
+
 
     }
 
@@ -764,9 +685,10 @@ void background::adddestroyer(){
 
     }
     if(id==3){
-        destroyer* destroyer1=new destroyer(desktopHight,desktopWidth);
+       horizontaldestroyer1 * destroyer1=new horizontaldestroyer1(3,2*(desktopWidth/20),desktopHight-(2*(desktopHight/15)));
         scene->addItem(destroyer1);
-
+        verticaldestroyer1 * destroyer2=new verticaldestroyer1(3,(desktopWidth/2)+(desktopWidth/20),(1*(desktopHight/15)));
+         scene->addItem(destroyer2);
     }
 
 }

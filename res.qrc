@@ -7,19 +7,27 @@
         <file>brick1.jpg</file>
         <file>brick2.jpg</file>
         <file>brick3.jpg</file>
-        <file>d1.png</file>
-        <file>d2.png</file>
-        <file>d3.png</file>
-        <file>d4.png</file>
+        <file>dv1.jpg</file>
+        <file>dv2.jpg</file>
+        <file>dv3.jpg</file>
+        <file>dv4.jpg</file>
+        <file>dv5.jpg</file>
+        <file>dv6.jpg</file>
+        <file>dv7.jpg</file>
+        <file>dv8.jpg</file>
         <file>d5.png</file>
         <file>d6.png</file>
         <file>d7.png</file>
+        <file>d8.png</file>
+        <file>d9.png</file>
+        <file>d10.png</file>
         <file>d11.png</file>
-        <file>d22.png</file>
-        <file>d33.png</file>
-        <file>d44.png</file>
-        <file>d55.png</file>
-        <file>d66.png</file>
-        <file>d77.png</file>
+        <file>d12.png</file>
+        <file>key1.png</file>
+        <file>key2.png</file>
+        <file>key3.png</file>
+        <file>key4.png</file>
+        <file>key5.png</file>
+        <file>key6.png</file>
     </qresource>
 </RCC>

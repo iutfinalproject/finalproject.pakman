@@ -8,21 +8,22 @@ class destroyer : public QObject,public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit destroyer(int,int, QGraphicsPixmapItem *parent=0);
+    explicit destroyer(int id,int firstx,int firsty, QGraphicsPixmapItem *parent=0);
 
 
 public slots:
-void move();
 
 
-private:
+protected:
     QPixmap * mydestroyer;
+    int img_id;
     int height;
     int width;
     int x;
     int y;
     int x0;
     int y0;
+
 
 };
 

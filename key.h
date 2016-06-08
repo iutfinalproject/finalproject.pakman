@@ -10,7 +10,7 @@ class key : public  QObject,public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit key(int,QGraphicsPixmapItem *parent = 0);
+    explicit key(QGraphicsPixmapItem *parent = 0);
      void setpos_(int,int);
 
 signals:
