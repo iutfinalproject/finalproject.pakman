@@ -1,0 +1,243 @@
+#ifndef KEY_H
+#define KEY_H
+
+#include <QObject>
+#include<QGraphicsPixmapItem>
+#include<QGraphicsItem>
+#include<QTimer>
+#include<QMovie>
+class key : public  QObject,public QGraphicsPixmapItem
+{
+    Q_OBJECT
+public:
+    explicit key(QGraphicsPixmapItem *parent = 0);
+     void setpos_(int,int);
+
+signals:
+    
+public slots:
+     void rotate_img();
+private:
+     QTimer *key_timer;
+     QPixmap*key_img1;
+     QPixmap*key_img2;
+     QPixmap*key_img3;
+     QPixmap*key_img4;
+     QPixmap*key_img5;
+     QPixmap*key_img6;
+
+     int flag;
+    
+};
+
+#endif // KEY_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include "key.h"
+#include<QSize>
+#include<QRect>
+#include<QDebug>
+#include<QDesktopWidget>
+#include<QGraphicsScene>
+
+key::key(QGraphicsPixmapItem *parent):QObject(),QGraphicsPixmapItem(parent)
+{
+    QDesktopWidget desktop;
+
+    int desktopHight=desktop.geometry().height();
+    int desktopWidth=desktop.geometry().width();
+
+    flag=1;
+
+             key_img1=new QPixmap("://image/key1");
+              key_img2=new QPixmap("://image/key2");
+               key_img3=new QPixmap("://image/key3");
+                key_img4=new QPixmap("://image/key4");
+                 key_img5=new QPixmap("://image/key5");
+                  key_img6=new QPixmap("://image/key6");
+
+           * key_img1= key_img1->scaled(desktopWidth/22,desktopHight/15);
+           * key_img2= key_img2->scaled(desktopWidth/22,desktopHight/15);
+           * key_img3= key_img3->scaled(desktopWidth/22,desktopHight/15);
+           * key_img4= key_img4->scaled(desktopWidth/22,desktopHight/15);
+           * key_img5= key_img5->scaled(desktopWidth/22,desktopHight/15);
+           * key_img6= key_img6->scaled(desktopWidth/22,desktopHight/15);
+
+             setPixmap(*key_img1);
+
+             qDebug()<<"***********************";
+
+      key_timer=new QTimer();
+     key_timer->start(100);
+     connect(key_timer,SIGNAL(timeout()),this,SLOT(rotate_img()));
+     }
+
+void key::setpos_(int x, int y)
+{
+    this->setPos(x,y);
+}
+
+void key::rotate_img()
+{
+    flag++;
+   if(flag==1){
+         setPixmap(*key_img1);
+    }
+   if(flag==2){
+         setPixmap(*key_img2);
+    }
+   if(flag==3){
+         setPixmap(*key_img3);
+    }
+   if(flag==4){
+         setPixmap(*key_img4);
+    }
+   if(flag==5){
+         setPixmap(*key_img5);
+    }
+   if(flag==6){
+         setPixmap(*key_img6);
+    }
+   if(flag==6)
+     flag=0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void background::addkey()
+{
+    if(id==2){
+
+       key *KEY[22];
+         KEY[1]=new key();
+         KEY[1]->setpos_((desktopWidth/20)*2.75,desktopHight-(desktopHight/15)*10);
+        scene->addItem(KEY[1]);
+
+
+       KEY[2]=new key();
+        KEY[2]->setpos_((desktopWidth/20)*6.5,desktopHight-(desktopHight/15)*11);
+        scene->addItem(KEY[2]);
+
+        KEY[3]=new key();
+        KEY[3]->setpos_((desktopWidth/20)*5,desktopHight-(desktopHight/15)*14);
+        scene->addItem(KEY[3]);
+
+        KEY[4]=new key();
+        KEY[4]->setpos_((desktopWidth/20)*7,desktopHight-(desktopHight/15)*6.5);
+        scene->addItem(KEY[4]);
+
+        KEY[5]=new key();
+        KEY[5]->setpos_((desktopWidth/20)*9,desktopHight-(desktopHight/15)*4);
+        scene->addItem(KEY[5]);
+
+        KEY[6]=new key();
+        KEY[6]->setpos_((desktopWidth/20)*11.5,desktopHight-(desktopHight/15)*3);
+        scene->addItem(KEY[6]);
+
+        KEY[7]=new key();
+        KEY[7]->setpos_((desktopWidth/20)*3,desktopHight-(desktopHight/15)*5);
+        scene->addItem(KEY[7]);
+
+        KEY[8]=new key();
+        KEY[8]->setpos_((desktopWidth/20)*2,desktopHight-(desktopHight/15)*3);
+        scene->addItem(KEY[8]);
+
+        KEY[9]=new key();
+        KEY[9]->setpos_((desktopWidth/20)*9,desktopHight-(desktopHight/15)*2);
+        scene->addItem(KEY[9]);
+
+      /*  KEY[10]=new key();
+        KEY[10]->setpos_((desktopWidth/20)*9,desktopHight-(desktopHight/15)*2);
+        scene->addItem(KEY[10]);*/
+
+        KEY[11]=new key();
+        KEY[11]->setpos_(900,400);
+        scene->addItem(KEY[11]);
+
+        KEY[12]=new key();
+        KEY[12]->setpos_(1052,500);
+        scene->addItem(KEY[12]);
+
+        KEY[13]=new key();
+        KEY[13]->setpos_(1100,200);
+        scene->addItem(KEY[13]);
+
+        KEY[14]=new key();
+        KEY[14]->setpos_(1150,440);
+        scene->addItem(KEY[14]);
+
+        KEY[15]=new key();
+        KEY[15]->setpos_(1150,338);
+        scene->addItem(KEY[15]);
+
+        KEY[16]=new key();
+        KEY[16]->setpos_(1100,670);
+        scene->addItem(KEY[16]);
+
+        KEY[17]=new key();
+        KEY[17]->setpos_(300,670);
+        scene->addItem(KEY[17]);
+
+        KEY[18]=new key();
+        KEY[18]->setpos_(100,50);
+        scene->addItem(KEY[18]);
+
+        KEY[19]=new key();
+        KEY[19]->setpos_(800,50);
+        scene->addItem(KEY[19]);
+
+        KEY[20]=new key();
+        KEY[20]->setpos_(500,300);
+        scene->addItem(KEY[20]);
+
+        KEY[21]=new key();
+        KEY[21]->setpos_(1100,50);
+        scene->addItem(KEY[21]);
+
+    }
+
+}
+
+
+
+void background::adddestroyer(){
+    if(id==1){
+
+
+    }
+
+    if(id==2){
+
+
+    }
+    if(id==2){
+        destroyer* destroyer1=new destroyer(desktopHight,desktopWidth);
+        scene->addItem(destroyer1);
+
+    }
+
+}
