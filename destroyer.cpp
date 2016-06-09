@@ -52,7 +52,4 @@ destroyer::destroyer(int id,int firstx,int firsty,QGraphicsPixmapItem *parent) :
     }
 
 
-
 }
-
-

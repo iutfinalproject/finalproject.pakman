@@ -1,3 +1,4 @@
+
 #include<QDesktopWidget>
 #include "background.h"
 #include<QGraphicsScene>
@@ -5,8 +6,12 @@
 #include<bridge.h>
 #include<QDebug>
 #include"key.h"
+#include"treasure.h"
 #include"verticaldestroyer1.h"
 #include"horizontaldestroyer1.h"
+#include"startpage.h"
+#include"score.h"
+#include"health.h"
 
 
 background::background(QObject *parent, QGraphicsScene* nowscene, int nowid) :
@@ -652,7 +657,91 @@ void background::addkey(){
     }
     else if(id==2){
 
+        key *KEY[22];
+          KEY[1]=new key();
+          KEY[1]->setpos_((desktopWidth/20)*2.75,desktopHight-(desktopHight/15)*10);
+         scene->addItem(KEY[1]);
 
+
+        KEY[2]=new key();
+         KEY[2]->setpos_((desktopWidth/20)*6.5,desktopHight-(desktopHight/15)*11);
+         scene->addItem(KEY[2]);
+
+         KEY[3]=new key();
+         KEY[3]->setpos_((desktopWidth/20)*5,desktopHight-(desktopHight/15)*14);
+         scene->addItem(KEY[3]);
+
+         KEY[4]=new key();
+         KEY[4]->setpos_((desktopWidth/20)*7,desktopHight-(desktopHight/15)*6.5);
+         scene->addItem(KEY[4]);
+
+         KEY[5]=new key();
+         KEY[5]->setpos_((desktopWidth/20)*9,desktopHight-(desktopHight/15)*4);
+         scene->addItem(KEY[5]);
+
+         KEY[6]=new key();
+         KEY[6]->setpos_((desktopWidth/20)*11.5,desktopHight-(desktopHight/15)*3);
+         scene->addItem(KEY[6]);
+
+         KEY[7]=new key();
+         KEY[7]->setpos_((desktopWidth/20)*3,desktopHight-(desktopHight/15)*5);
+         scene->addItem(KEY[7]);
+
+         KEY[8]=new key();
+         KEY[8]->setpos_((desktopWidth/20)*2,desktopHight-(desktopHight/15)*3);
+         scene->addItem(KEY[8]);
+
+         KEY[9]=new key();
+         KEY[9]->setpos_((desktopWidth/20)*9,desktopHight-(desktopHight/15)*2);
+         scene->addItem(KEY[9]);
+
+         KEY[10]=new key();
+         KEY[10]->setpos_((desktopWidth/20)*11,desktopHight-(desktopHight/15)*9.5);
+         scene->addItem(KEY[10]);
+
+        KEY[11]=new key();
+         KEY[11]->setpos_((desktopWidth/20)*12.5,desktopHight-(desktopHight/15)*7);
+         scene->addItem(KEY[11]);
+
+        KEY[12]=new key();
+         KEY[12]->setpos_((desktopWidth/20)*15.5,desktopHight-(desktopHight/15)*5);
+         scene->addItem(KEY[12]);
+
+         KEY[13]=new key();
+         KEY[13]->setpos_((desktopWidth/20)*16.75,desktopHight-(desktopHight/15)*11);
+         scene->addItem(KEY[13]);
+
+        KEY[14]=new key();
+         KEY[14]->setpos_((desktopWidth/20)*16.75,desktopHight-(desktopHight/15)*6.5);
+         scene->addItem(KEY[14]);
+
+         KEY[15]=new key();
+         KEY[15]->setpos_((desktopWidth/20)*16.75,desktopHight-(desktopHight/15)*8.5);
+         scene->addItem(KEY[15]);
+
+         KEY[16]=new key();
+         KEY[16]->setpos_((desktopWidth/20)*16.75,desktopHight-(desktopHight/15)*9.5);
+         scene->addItem(KEY[16]);
+
+        /* KEY[17]=new key();
+         KEY[17]->setpos_((desktopWidth/20)*11,desktopHight-(desktopHight/15)*9.5);
+         scene->addItem(KEY[17]);*/
+
+         KEY[18]=new key();
+         KEY[18]->setpos_(100,50);
+         scene->addItem(KEY[18]);
+
+         KEY[19]=new key();
+         KEY[19]->setpos_(800,50);
+         scene->addItem(KEY[19]);
+
+         KEY[20]=new key();
+         KEY[20]->setpos_(500,300);
+         scene->addItem(KEY[20]);
+
+         KEY[21]=new key();
+         KEY[21]->setpos_(1100,50);
+         scene->addItem(KEY[21]);
 
      }
 
@@ -681,7 +770,10 @@ void background::adddestroyer(){
     }
 
     if(id==2){
-
+        horizontaldestroyer1 * destroyer1=new horizontaldestroyer1(3,2*(desktopWidth/20),desktopHight-(2*(desktopHight/15)));
+         scene->addItem(destroyer1);
+         verticaldestroyer1 * destroyer2=new verticaldestroyer1(3,(desktopWidth/2)+(desktopWidth/20),(1*(desktopHight/15)));
+          scene->addItem(destroyer2);
 
     }
     if(id==3){
@@ -690,5 +782,48 @@ void background::adddestroyer(){
         verticaldestroyer1 * destroyer2=new verticaldestroyer1(3,(desktopWidth/2)+(desktopWidth/20),(1*(desktopHight/15)));
          scene->addItem(destroyer2);
     }
+
+}
+
+void background::addtreasure()
+{
+    treasure* Treasure1=new treasure();
+     Treasure1->setpos_(510,200);
+     scene->addItem(Treasure1);
+
+}
+void background::addscore()
+{
+    score*newscore=new score();
+    scene->addItem(newscore);
+
+}
+
+void background::addHealth()
+{
+    Health*newhealth=new Health();
+    scene->addItem(newhealth);
+    newhealth->setPos(newhealth->x(),newhealth->y()+25);
+}
+
+void background::page_of_start()
+{
+    startpage *newpage1=new startpage("://image/d1.png");
+   newpage1->setPos(500,500);
+   scene->addItem(newpage1);
+
+   startpage *newpage2=new startpage("://image/d2.png");
+   newpage2->setPos(100,100);
+   scene->addItem(newpage2);
+
+
+
+   if(newpage1->getimgaddress())
+       player_address=newpage1->getimgaddress();
+   else
+       player_address=newpage2->getimgaddress();
+
+
+
 
 }

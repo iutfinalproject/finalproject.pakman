@@ -13,11 +13,17 @@ public:
     void addbrick();
     void addkey();
     void adddestroyer();
+    void addtreasure();
+    void addscore();
+    void addHealth();
+    void page_of_start();
+    char*getplayeraddress(){return player_address;}
 private:
     QGraphicsScene* scene;
     int id;
     int desktopHight;
     int desktopWidth;
+    char*player_address;
 
 };
 

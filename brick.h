@@ -3,8 +3,6 @@
 
 #include <QObject>
 
-
-
 #include<QGraphicsPixmapItem>
 #include<QGraphicsItem>
 

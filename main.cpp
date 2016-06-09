@@ -12,8 +12,9 @@
 int main(int argc, char *argv[])
 {
 
-    int flag=3;
+    int flag=2;
     QApplication a(argc, argv);
+     QGraphicsScene *scene=new QGraphicsScene();
     QGraphicsScene *scene1=new QGraphicsScene();
     QGraphicsScene *scene2=new QGraphicsScene();
     QGraphicsScene *scene3=new QGraphicsScene();
@@ -25,6 +26,16 @@ int main(int argc, char *argv[])
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setFixedSize(desktopWidth,desktopHight);
+
+    //start page
+    scene->setSceneRect(0,0,desktopWidth,desktopHight);
+    QImage background2(":/image/background0.jpg");
+    scene->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
+      background *mybackground=new background(0,scene,0);
+      mybackground->page_of_start();
+     view->setScene(scene);
+
+
 if(flag==1){
 
     scene1->setSceneRect(0,0,desktopWidth,desktopHight);
@@ -38,13 +49,17 @@ if(flag==1){
 }
 else if(flag==2){
     scene2->setSceneRect(0,0,desktopWidth,desktopHight);
-    QImage background2(":/image/scene2.jpg");
+    QImage background2(":/image/background2.png");
     scene2->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
     background mybackground(0,scene2,2);
     mybackground.addbrick();
     mybackground.adddestroyer();
     mybackground.addkey();
+    mybackground.addscore();
+    mybackground.addHealth();
+    mybackground.addtreasure();
     view->setScene(scene2);
+
 }
 else if(flag==3){
     scene3->setSceneRect(0,0,desktopWidth,desktopHight);

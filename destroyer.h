@@ -28,4 +28,3 @@ protected:
 };
 
 #endif // DESTROYER1_H
-

@@ -1,20 +1,17 @@
 <RCC>
     <qresource prefix="/image">
-        <file>bridge.jpg</file>
-        <file>scene1.jpg</file>
-        <file>scene2.jpg</file>
-        <file>scene3.jpg</file>
-        <file>brick1.jpg</file>
-        <file>brick2.jpg</file>
-        <file>brick3.jpg</file>
-        <file>dv1.jpg</file>
-        <file>dv2.jpg</file>
-        <file>dv3.jpg</file>
-        <file>dv4.jpg</file>
-        <file>dv5.jpg</file>
-        <file>dv6.jpg</file>
-        <file>dv7.jpg</file>
-        <file>dv8.jpg</file>
+        <file>key1.png</file>
+        <file>key2.png</file>
+        <file>key3.png</file>
+        <file>key4.png</file>
+        <file>key5.png</file>
+        <file>key6.png</file>
+        <file>background2.png</file>
+        <file>background0.jpg</file>
+        <file>d1.png</file>
+        <file>d2.png</file>
+        <file>d3.png</file>
+        <file>d4.png</file>
         <file>d5.png</file>
         <file>d6.png</file>
         <file>d7.png</file>
@@ -23,11 +20,18 @@
         <file>d10.png</file>
         <file>d11.png</file>
         <file>d12.png</file>
-        <file>key1.png</file>
-        <file>key2.png</file>
-        <file>key3.png</file>
-        <file>key4.png</file>
-        <file>key5.png</file>
-        <file>key6.png</file>
+        <file>d13.png</file>
+        <file>d14.png</file>
+        <file>d15.png</file>
+        <file>d16.png</file>
+        <file>brick2.jpg</file>
+        <file>treasure1.png</file>
+        <file>treasure2.png</file>
+        <file>treasure3.png</file>
+        <file>treasure4.png</file>
+        <file>treasure5.png</file>
+        <file>treasure6.png</file>
+        <file>treasure7.png</file>
+        <file>treasure8.png</file>
     </qresource>
 </RCC>

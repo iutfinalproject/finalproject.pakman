@@ -1,3 +1,4 @@
+
 #include<QGraphicsScene>
 #include "brick.h"
 
@@ -26,5 +27,4 @@ void brick::setpos_(int x, int y)
 {
     this->setPos(x,y);
 }
-
 

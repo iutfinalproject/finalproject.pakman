@@ -1,3 +1,4 @@
+
 #include "key.h"
 #include<QSize>
 #include<QRect>
@@ -21,12 +22,12 @@ key::key(QGraphicsPixmapItem *parent):QObject(),QGraphicsPixmapItem(parent)
                  key_img5=new QPixmap("://image/key5");
                   key_img6=new QPixmap("://image/key6");
 
-           * key_img1= key_img1->scaled(desktopWidth/25,desktopHight/25);
-           * key_img2= key_img2->scaled(desktopWidth/25,desktopHight/25);
-           * key_img3= key_img3->scaled(desktopWidth/25,desktopHight/25);
-           * key_img4= key_img4->scaled(desktopWidth/25,desktopHight/25);
-           * key_img5= key_img5->scaled(desktopWidth/25,desktopHight/25);
-           * key_img6= key_img6->scaled(desktopWidth/25,desktopHight/25);
+           * key_img1= key_img1->scaled(desktopWidth/22,desktopHight/15);
+           * key_img2= key_img2->scaled(desktopWidth/22,desktopHight/15);
+           * key_img3= key_img3->scaled(desktopWidth/22,desktopHight/15);
+           * key_img4= key_img4->scaled(desktopWidth/22,desktopHight/15);
+           * key_img5= key_img5->scaled(desktopWidth/22,desktopHight/15);
+           * key_img6= key_img6->scaled(desktopWidth/22,desktopHight/15);
 
              setPixmap(*key_img1);
 

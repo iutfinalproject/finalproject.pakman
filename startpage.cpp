@@ -1,3 +1,4 @@
+
 #include<QDebug>
 //#include<QMouseB>
 #include"startpage.h"

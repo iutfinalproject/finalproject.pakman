@@ -1,3 +1,4 @@
+
 #include"treasure.h"
 #include<QObject>
 treasure::treasure(QGraphicsPixmapItem *parent):QObject(),QGraphicsPixmapItem(parent)
