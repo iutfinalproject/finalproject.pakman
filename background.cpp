@@ -5,9 +5,11 @@
 #include<bridge.h>
 #include<QDebug>
 #include"key.h"
-#include"destroyer.h"
-#include"player_1.h"
-#include"player_2.h"
+#include"verticaldestroyer1.h"
+#include"horizontaldestroyer1.h"
+#include<QThread>
+
+
 background::background(QObject *parent, QGraphicsScene* nowscene, int nowid) :
     QObject(parent)
 {
@@ -25,254 +27,235 @@ void background::addbrick()
     if(id==1){
 
         int number_h=desktopHight/15;
-                  int number_w=desktopWidth/20.6;
-                 brick * brick_y[(desktopHight/number_h)];
-                 int y =0;
-                 for(int i=0;i<(desktopHight/number_h)+1;i++){
-                 brick_y[i]=new brick(1,desktopHight,desktopWidth);
-                 brick_y[i]->setpos_(0,y );
-                 y+=desktopHight/15;
-                 scene->addItem(brick_y[i]);
-                 }
+            int number_w=desktopWidth/20.6;
+           brick * brick_y[(desktopHight/number_h)];
+           int y =0;
+           for(int i=0;i<(desktopHight/number_h)+1;i++){
+           brick_y[i]=new brick(1,desktopHight,desktopWidth);
+           brick_y[i]->setpos_(0,y );
+           y+=desktopHight/15;
+           scene->addItem(brick_y[i]);
+           }
 
 
-                 brick * brick_x[desktopWidth/number_w];
-                 int x=0;
-                 for(int i=0;i<(desktopWidth/number_w)+1;i++){
-                 brick_x[i]=new brick(1,desktopHight,desktopWidth);
-                 brick_x[i]->setpos_(x,0 );
-                 x+=desktopWidth/20.6;
-                 scene->addItem(brick_x[i]);
-                 }
-              //////right
-                int y1_rihgt=desktopHight/15;
-                 brick *brick_y2[desktopHight/number_h];
-                 for(int i=0;i<(desktopHight/number_h)+1;i++){
-                 brick_y2[i]=new brick(1,desktopHight,desktopWidth);
-                 brick_y2[i]->setpos_(desktopWidth-desktopWidth/20.6,y1_rihgt );
-                 y1_rihgt+=desktopHight/15;
-                 scene->addItem(brick_y2[i]);
-                 }
-                 /////down
-                 brick * brick_x2[desktopWidth/number_w];
-                 int x1_down= desktopWidth/20.6;
-                 for(int i=0;i<desktopWidth/number_w;i++){
-                 brick_x2[i]=new brick(1,desktopHight,desktopWidth);
-                 brick_x2[i]->setpos_(x1_down,desktopHight-desktopHight/15);
-                 x1_down+=desktopWidth/20.6;
-                 scene->addItem(brick_x2[i]);
-                 }
-                 int number_y_leftbrick=desktopHight/(4*(desktopHight/15));
-                 /////left up
-                 brick * brick_y_left1[number_y_leftbrick];
-                 int y2_left =desktopHight/15;
-                 for(int i=0;i<number_y_leftbrick;i++){
-                 brick_y_left1[i]=new brick(1,desktopHight,desktopWidth);
-                 brick_y_left1[i]->setpos_(desktopWidth/20.6,y2_left);
-                 y2_left+=desktopHight/15;
-                 scene->addItem(brick_y_left1[i]);
-                 }
+           brick * brick_x[desktopWidth/number_w];
+           int x=0;
+           for(int i=0;i<(desktopWidth/number_w)+1;i++){
+           brick_x[i]=new brick(1,desktopHight,desktopWidth);
+           brick_x[i]->setpos_(x,0 );
+           x+=desktopWidth/20.6;
+           scene->addItem(brick_x[i]);
+           }
+        //////right
+          int y1_rihgt=desktopHight/15;
+           brick *brick_y2[desktopHight/number_h];
+           for(int i=0;i<(desktopHight/number_h)+1;i++){
+           brick_y2[i]=new brick(1,desktopHight,desktopWidth);
+           brick_y2[i]->setpos_(desktopWidth-desktopWidth/20.6,y1_rihgt );
+           y1_rihgt+=desktopHight/15;
+           scene->addItem(brick_y2[i]);
+           }
+           /////down
+           brick * brick_x2[desktopWidth/number_w];
+           int x1_down= desktopWidth/20.6;
+           for(int i=0;i<desktopWidth/number_w;i++){
+           brick_x2[i]=new brick(1,desktopHight,desktopWidth);
+           brick_x2[i]->setpos_(x1_down,desktopHight-desktopHight/15);
+           x1_down+=desktopWidth/20.6;
+           scene->addItem(brick_x2[i]);
+           }
+           int number_y_leftbrick=desktopHight/(4*(desktopHight/15));
+           /////left up
+           brick * brick_y_left1[number_y_leftbrick];
+           int y2_left =desktopHight/15;
+           for(int i=0;i<number_y_leftbrick;i++){
+           brick_y_left1[i]=new brick(1,desktopHight,desktopWidth);
+           brick_y_left1[i]->setpos_(desktopWidth/20.6,y2_left);
+           y2_left+=desktopHight/15;
+           scene->addItem(brick_y_left1[i]);
+           }
 
-                     brick * brick_y_left2[number_y_leftbrick];
-                     int y3_left =desktopHight/15;
-                     for(int i=0;i<number_y_leftbrick;i++){
-                     brick_y_left2[i]=new brick(1,desktopHight,desktopWidth);
-                     brick_y_left2[i]->setpos_( (desktopWidth/20.7)*2,y3_left);
-                     y3_left+=desktopHight/15;
-                     scene->addItem(brick_y_left2[i]);
+               brick * brick_y_left2[number_y_leftbrick];
+               int y3_left =desktopHight/15;
+               for(int i=0;i<number_y_leftbrick;i++){
+               brick_y_left2[i]=new brick(1,desktopHight,desktopWidth);
+               brick_y_left2[i]->setpos_( (desktopWidth/20.6)*2,y3_left);
+               y3_left+=desktopHight/15;
+               scene->addItem(brick_y_left2[i]);
 
-                 }
+           }
 
-                         brick * brick_y_left3[number_y_leftbrick];
-                         int y4_left =desktopHight/15;
-                         for(int i=0;i<number_y_leftbrick;i++){
-                         brick_y_left3[i]=new brick(1,desktopHight,desktopWidth);
-                         brick_y_left3[i]->setpos_( (desktopWidth/20.7)*3,y4_left);
-                         y4_left+=desktopHight/15;
-                         scene->addItem(brick_y_left3[i]);
+                   brick * brick_y_left3[number_y_leftbrick];
+                   int y4_left =desktopHight/15;
+                   for(int i=0;i<number_y_leftbrick;i++){
+                   brick_y_left3[i]=new brick(1,desktopHight,desktopWidth);
+                   brick_y_left3[i]->setpos_( (desktopWidth/20.6)*3,y4_left);
+                   y4_left+=desktopHight/15;
+                   scene->addItem(brick_y_left3[i]);
 
-                 }
+           }
 
 
-              ////////left down
+        ////////left down
 
-                     brick * brick_y_leftdown1[number_y_leftbrick];
-                     int y2_left_down =desktopHight-(((desktopHight/15)*2)-5);
-                     for(int i=0;i<number_y_leftbrick;i++){
-                     brick_y_leftdown1[i]=new brick(1,desktopHight,desktopWidth);
-                     brick_y_leftdown1[i]->setpos_( desktopWidth/20.6,y2_left_down);
-                     y2_left_down-=desktopHight/15;
-                     scene->addItem(brick_y_leftdown1[i]);
-                     }
-                         brick * brick_y_leftdown2[number_y_leftbrick];
-                         int y3_left_down =desktopHight-(((desktopHight/15)*2)-5);
-                         for(int i=0;i<number_y_leftbrick;i++){
-                         brick_y_leftdown2[i]=new brick(1,desktopHight,desktopWidth);
-                         brick_y_leftdown2[i]->setpos_( (desktopWidth/20.7)*2,y3_left_down);
-                         y3_left_down-=desktopHight/15;
-                         scene->addItem(brick_y_leftdown2[i]);
+               brick * brick_y_leftdown1[number_y_leftbrick];
+               int y2_left_down =desktopHight-(((desktopHight/15)*2)-5);
+               for(int i=0;i<number_y_leftbrick;i++){
+               brick_y_leftdown1[i]=new brick(1,desktopHight,desktopWidth);
+               brick_y_leftdown1[i]->setpos_( desktopWidth/20.6,y2_left_down);
+               y2_left_down-=desktopHight/15;
+               scene->addItem(brick_y_leftdown1[i]);
+               }
+                   brick * brick_y_leftdown2[number_y_leftbrick];
+                   int y3_left_down =desktopHight-(((desktopHight/15)*2)-5);
+                   for(int i=0;i<number_y_leftbrick;i++){
+                   brick_y_leftdown2[i]=new brick(1,desktopHight,desktopWidth);
+                   brick_y_leftdown2[i]->setpos_( (desktopWidth/20.6)*2,y3_left_down);
+                   y3_left_down-=desktopHight/15;
+                   scene->addItem(brick_y_leftdown2[i]);
 
-                     }
+               }
 
-                             brick * brick_y_leftdown3[number_y_leftbrick];
-                             int y4_left_down =desktopHight-(((desktopHight/15)*2)-5);
-                             for(int i=0;i<number_y_leftbrick;i++){
-                             brick_y_leftdown3[i]=new brick(1,desktopHight,desktopWidth);
-                             brick_y_leftdown3[i]->setpos_( (desktopWidth/20.7)*3,y4_left_down);
-                             y4_left_down-=desktopHight/15;
-                             scene->addItem(brick_y_leftdown3[i]);
+                       brick * brick_y_leftdown3[number_y_leftbrick];
+                       int y4_left_down =desktopHight-(((desktopHight/15)*2)-5);
+                       for(int i=0;i<number_y_leftbrick;i++){
+                       brick_y_leftdown3[i]=new brick(1,desktopHight,desktopWidth);
+                       brick_y_leftdown3[i]->setpos_( (desktopWidth/20.6)*3,y4_left_down);
+                       y4_left_down-=desktopHight/15;
+                       scene->addItem(brick_y_leftdown3[i]);
 
-                     }
-              ///////right down
+               }
+        ///////right down
 
-                     brick * brick_y_rightdown1[number_y_leftbrick];
-                     int y2_rightdown =desktopHight-(((desktopHight/15)*2)-5);
-                     for(int i=0;i<number_y_leftbrick;i++){
-                     brick_y_rightdown1[i]=new brick(1,desktopHight,desktopWidth);
-                     brick_y_rightdown1[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*2),y2_rightdown);
-                     y2_rightdown-=desktopHight/15;
-                     scene->addItem(brick_y_rightdown1[i]);
-                     }
+               brick * brick_y_rightdown1[number_y_leftbrick];
+               int y2_rightdown =desktopHight-(((desktopHight/15)*2)-5);
+               for(int i=0;i<number_y_leftbrick;i++){
+               brick_y_rightdown1[i]=new brick(1,desktopHight,desktopWidth);
+               brick_y_rightdown1[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*2),y2_rightdown);
+               y2_rightdown-=desktopHight/15;
+               scene->addItem(brick_y_rightdown1[i]);
+               }
 
-                         brick * brick_y_rightdown2[number_y_leftbrick];
-                         int y3_rightdown =desktopHight-(((desktopHight/15)*2)-5);
-                         for(int i=0;i<number_y_leftbrick;i++){
-                         brick_y_rightdown2[i]=new brick(1,desktopHight,desktopWidth);
-                         brick_y_rightdown2[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*3),y3_rightdown);
-                         y3_rightdown-=desktopHight/15;
-                         scene->addItem(brick_y_rightdown2[i]);
+                   brick * brick_y_rightdown2[number_y_leftbrick];
+                   int y3_rightdown =desktopHight-(((desktopHight/15)*2)-5);
+                   for(int i=0;i<number_y_leftbrick;i++){
+                   brick_y_rightdown2[i]=new brick(1,desktopHight,desktopWidth);
+                   brick_y_rightdown2[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*3),y3_rightdown);
+                   y3_rightdown-=desktopHight/15;
+                   scene->addItem(brick_y_rightdown2[i]);
 
-                     }
+               }
 
-                             brick * brick_y_rightdown3[number_y_leftbrick];
-                             int y4_rightdown =desktopHight-(((desktopHight/15)*2)-5);
-                             for(int i=0;i<number_y_leftbrick;i++){
-                             brick_y_rightdown3[i]=new brick(1,desktopHight,desktopWidth);
-                             brick_y_rightdown3[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*4),y4_rightdown);
-                             y4_rightdown-=desktopHight/15;
-                             scene->addItem(brick_y_rightdown3[i]);
+                       brick * brick_y_rightdown3[number_y_leftbrick];
+                       int y4_rightdown =desktopHight-(((desktopHight/15)*2)-5);
+                       for(int i=0;i<number_y_leftbrick;i++){
+                       brick_y_rightdown3[i]=new brick(1,desktopHight,desktopWidth);
+                       brick_y_rightdown3[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*4),y4_rightdown);
+                       y4_rightdown-=desktopHight/15;
+                       scene->addItem(brick_y_rightdown3[i]);
 
-                     }
+               }
 
-              //////right up
+        //////right up
 
-                         brick * brick_y_right1[number_y_leftbrick];
-                         int y2_right =desktopHight/15;
-                         for(int i=0;i<number_y_leftbrick;i++){
-                         brick_y_right1[i]=new brick(1,desktopHight,desktopWidth);
-                         brick_y_right1[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*2),y2_right);
-                         y2_right+=desktopHight/15;
-                         scene->addItem(brick_y_right1[i]);
-                         }
+                   brick * brick_y_right1[number_y_leftbrick];
+                   int y2_right =desktopHight/15;
+                   for(int i=0;i<number_y_leftbrick;i++){
+                   brick_y_right1[i]=new brick(1,desktopHight,desktopWidth);
+                   brick_y_right1[i]->setpos_(desktopWidth- ((desktopWidth/20.6)*2),y2_right);
+                   y2_right+=desktopHight/15;
+                   scene->addItem(brick_y_right1[i]);
+                   }
 
-                             brick * brick_y_right2[number_y_leftbrick];
-                             int y3_right =desktopHight/15;
-                             for(int i=0;i<number_y_leftbrick;i++){
-                             brick_y_right2[i]=new brick(1,desktopHight,desktopWidth);
-                             brick_y_right2[i]->setpos_(desktopWidth-( (desktopWidth/20.7)*3),y3_right);
-                             y3_right+=desktopHight/15;
-                             scene->addItem(brick_y_right2[i]);
+                       brick * brick_y_right2[number_y_leftbrick];
+                       int y3_right =desktopHight/15;
+                       for(int i=0;i<number_y_leftbrick;i++){
+                       brick_y_right2[i]=new brick(1,desktopHight,desktopWidth);
+                       brick_y_right2[i]->setpos_(desktopWidth-( (desktopWidth/20.6)*3),y3_right);
+                       y3_right+=desktopHight/15;
+                       scene->addItem(brick_y_right2[i]);
 
-                         }
+                   }
 
-                                 brick * brick_y_right3[number_y_leftbrick];
-                                 int y4_right =desktopHight/15;
-                                 for(int i=0;i<number_y_leftbrick;i++){
-                                 brick_y_right3[i]=new brick(1,desktopHight,desktopWidth);
-                                 brick_y_right3[i]->setpos_(desktopWidth- ((desktopWidth/20.7)*4),y4_right);
-                                 y4_right+=desktopHight/15;
-                                 scene->addItem(brick_y_right3[i]);
+                           brick * brick_y_right3[number_y_leftbrick];
+                           int y4_right =desktopHight/15;
+                           for(int i=0;i<number_y_leftbrick;i++){
+                           brick_y_right3[i]=new brick(1,desktopHight,desktopWidth);
+                           brick_y_right3[i]->setpos_(desktopWidth- ((desktopWidth/20.6)*4),y4_right);
+                           y4_right+=desktopHight/15;
+                           scene->addItem(brick_y_right3[i]);
 
-                         }
-              /////betveen up
-                         int y_b_up =desktopHight/15;
-                         int x_brickb=(desktopWidth/2)-(4*(desktopWidth/20.6));
-                         brick * y_brick_b[7];
-                         for(int i=0;i<7;i++){
-                         y_brick_b[i]=new brick(1,desktopHight,desktopWidth);
-                         y_brick_b[i]->setpos_(x_brickb,y_b_up);
-                         x_brickb+=(desktopWidth/20.6);
-                         scene->addItem(y_brick_b[i]);
-                         }
+                   }
+        /////betveen up
+                   int y_b_up =desktopHight/15;
+                   int x_brickb=(desktopWidth/2)-(4*(desktopWidth/20.6));
+                   brick * y_brick_b[7];
+                   for(int i=0;i<7;i++){
+                   y_brick_b[i]=new brick(1,desktopHight,desktopWidth);
+                   y_brick_b[i]->setpos_(x_brickb,y_b_up*2);
+                   x_brickb+=(desktopWidth/20.6);
+                   scene->addItem(y_brick_b[i]);
+                   }
 
-                         ///1/3 up
+                   ///1/3 up
 
-                         int y4_brick =(desktopHight/15)*3.5;
-                         int x4_brickb=(desktopWidth/3)-(desktopWidth/20.6);
-                         brick * up_brick_b[33];
-                         for(int i=0;i<18;i++){
-                         up_brick_b[i]=new brick(1,desktopHight,desktopWidth);
+                   int y4_brick =(desktopHight/15)*4;
+                   int x4_brickb=(desktopWidth/3)-2*(desktopWidth/20.6);
+                   brick * up_brick_b[33];
+                   for(int i=0;i<30;i++){
+                   up_brick_b[i]=new brick(1,desktopHight,desktopWidth);
+                   up_brick_b[i]->setpos_(x4_brickb,y4_brick);
+                   x4_brickb+=(desktopWidth/20.6);
+                   scene->addItem(up_brick_b[i]);
+                   if(i==10){
+                     x4_brickb= (desktopWidth/3)-2*(desktopWidth/20.6);
+                      y4_brick+=desktopHight/15;
+                   }
+                   if(i==20){
+                       x4_brickb= (desktopWidth/3)-2*(desktopWidth/20.6);
+                        y4_brick+=desktopHight/15;
 
-                         up_brick_b[i]->setpos_(x4_brickb,y4_brick);
-                          scene->addItem(up_brick_b[i]);
-                           x4_brickb+=(desktopWidth/20.6);
-                         if(i==2){
-                             x4_brickb+=2*(desktopWidth/20.6);
-                         }
-                         if(i==5){
-                           x4_brickb= (desktopWidth/3)-(desktopWidth/20.6);
-                            y4_brick+=desktopHight/15;
-                         }
-                         if(i==8){
-                             x4_brickb+=2*(desktopWidth/20.6);
-                         }
+                   }
+                   }
+          //////betveen down
+                   int y_b_down =desktopHight/15;
+                   int x2_brickb=(desktopWidth/2)-(4*(desktopWidth/20.6));
+                   brick * y2_brick_b[40];
+                   for(int i=0;i<7;i++){
+                   y2_brick_b[i]=new brick(1,desktopHight,desktopWidth);
+                   y2_brick_b[i]->setpos_(x2_brickb,desktopHight-y_b_down*3);
+                   x2_brickb+=(desktopWidth/20.6);
+                   scene->addItem(y2_brick_b[i]);
 
-                         if(i==11){
-                             x4_brickb= (desktopWidth/3)-(desktopWidth/20.6);
-                              y4_brick+=desktopHight/15;
+                   }
+                   //////1/3 down
+               int x3_brickb=(desktopWidth/3)-2*(desktopWidth/20.6);
+               int y3_brickb=desktopHight-y_b_down*5;
+               for(int i=7;i<37;i++){
+               y2_brick_b[i]=new brick(1,desktopHight,desktopWidth);
+               y2_brick_b[i]->setpos_(x3_brickb,y3_brickb);
+               x3_brickb+=(desktopWidth/20.6);
+               scene->addItem(y2_brick_b[i]);
+               if(i==17){
+                  x3_brickb=(desktopWidth/3)-2*(desktopWidth/20.6) ;
+                  y3_brickb=y3_brickb-y_b_down;
+               }
+               if(i==27){
+                   x3_brickb=(desktopWidth/3)-2*(desktopWidth/20.6) ;
+                   y3_brickb=y3_brickb-(y_b_down);
+               }
+               }
+               int y_b=(desktopHight/2)-2*y_b_down;
+               int x_b=desktopWidth-5*(desktopWidth/20.6);
+            brick * y3_brick_b[4];
+            for(int i=0;i<4;i++){
+            y3_brick_b[i]=new brick(1,desktopHight,desktopWidth);
+            y3_brick_b[i]->setpos_(x_b,y_b);
+            y_b+=y_b_down;
+            scene->addItem(y3_brick_b[i]);
+            }
 
-                         }
-                         if(i==14){
-                              x4_brickb+=2*(desktopWidth/20.6);
-                         }
-                         }
-                //////betveen down
-                         int y_b_down =desktopHight/15;
-                         int x2_brickb=(desktopWidth/2)-(4*(desktopWidth/20.6));
-                         brick * y2_brick_b[40];
-                         for(int i=0;i<7;i++){
-                         y2_brick_b[i]=new brick(1,desktopHight,desktopWidth);
-                         y2_brick_b[i]->setpos_(x2_brickb,desktopHight-y_b_down*2);
-                         x2_brickb+=(desktopWidth/20.6);
-                         scene->addItem(y2_brick_b[i]);
 
-                         }
-                         //////1/3 down
-                     int x3_brickb=(desktopWidth/3)-(desktopWidth/20.6);
-                     int y3_brickb=desktopHight-y_b_down*5;
-                     for(int i=7;i<25;i++){
-                     y2_brick_b[i]=new brick(1,desktopHight,desktopWidth);
-                     y2_brick_b[i]->setpos_(x3_brickb,y3_brickb);
-                     x3_brickb+=(desktopWidth/20.6);
-                     scene->addItem(y2_brick_b[i]);
-                     if(i==9){
-                       x3_brickb+=2*(desktopWidth/20.6);
-                     }
-                     if(i==12){
-                        x3_brickb=(desktopWidth/3)-(desktopWidth/20.6) ;
-                        y3_brickb=y3_brickb-y_b_down;
-                     }
-                     if(i==15){
-                        x3_brickb+=2*(desktopWidth/20.6);
-                     }
-                     if(i==18){
-                         x3_brickb=(desktopWidth/3)-(desktopWidth/20.6) ;
-                         y3_brickb=y3_brickb-(y_b_down);
-                     }
-                     if(i==21){
-                         x3_brickb+=2*(desktopWidth/20.6);
-                     }
-                     }
-         player_1 *player1_;
-            player1_=new player_1();
-            player1_->setFlag(QGraphicsItem::ItemIsFocusable);
-            player1_->setFocus();
-            scene->addItem(player1_);
-          player_2 *player2_;
-               player2_=new player_2();
-               player2_->setFlag(QGraphicsItem::ItemIsFocusable);
-               player2_->setFocus();
-               scene->addItem(player2_);
 
     }
 
@@ -665,88 +648,11 @@ void background::addbrick()
 
 void background::addkey(){
     if(id==1){
-        QDesktopWidget desktop;
-           desktopHight=desktop.geometry().height();
-           desktopWidth=desktop.geometry().width();
-           int w=desktopWidth/20.6;
-           int h=desktopHight/15;
-        key *KEY[20];
-        KEY[1]=new key(2);
-        KEY[1]->setpos_(w+4,desktopHight/1.75);
-        scene->addItem(KEY[1]);
 
 
-        KEY[2]=new key(2);
-        KEY[2]->setpos_(w+4,desktopHight/3);
-        scene->addItem(KEY[2]);
+    }
+    else if(id==2){
 
-        KEY[3]=new key(2);
-        KEY[3]->setpos_(desktopWidth-(w*2),desktopHight/1.75);
-        scene->addItem(KEY[3]);
-
-        KEY[4]=new key(2);
-        KEY[4]->setpos_(desktopWidth-(w*2),desktopHight/3);
-        scene->addItem(KEY[4]);
-
-        KEY[5]=new key(2);
-        KEY[5]->setpos_(desktopWidth/3,2.5*h);
-        scene->addItem(KEY[5]);
-
-        KEY[6]=new key(2);
-        KEY[6]->setpos_(desktopWidth/1.7,2.5*h);
-        scene->addItem(KEY[6]);
-
-        KEY[7]=new key(2);
-        KEY[7]->setpos_(desktopWidth/2.2,4*h);
-        scene->addItem(KEY[7]);
-
-        KEY[8]=new key(2);
-        KEY[8]->setpos_(desktopWidth/2.2,6.7*h);
-        scene->addItem(KEY[8]);
-
-        KEY[9]=new key(2);
-        KEY[9]->setpos_(desktopWidth/2.2,10*h);
-        scene->addItem(KEY[9]);
-
-        KEY[10]=new key(2);
-        KEY[10]->setpos_(desktopWidth/1.7,6.7*h);
-        scene->addItem(KEY[10]);
-
-        KEY[11]=new key(2);
-        KEY[11]->setpos_(desktopWidth/3,6.7*h);
-        scene->addItem(KEY[11]);
-
-        KEY[12]=new key(2);
-        KEY[12]->setpos_(desktopWidth/3,12*h);
-        scene->addItem(KEY[12]);
-
-        KEY[13]=new key(2);
-        KEY[13]->setpos_(desktopWidth/1.7,12*h);
-        scene->addItem(KEY[13]);
-
-        KEY[14]=new key(2);
-        KEY[14]->setpos_(desktopWidth/6,6.7*h);
-        scene->addItem(KEY[14]);
-
-        KEY[15]=new key(2);
-        KEY[15]->setpos_(desktopWidth/1.3,6.7*h);
-        scene->addItem(KEY[15]);
-
-        KEY[16]=new key(2);
-        KEY[16]->setpos_(desktopWidth/4.3,1.8*h);
-        scene->addItem(KEY[16]);
-
-        KEY[17]=new key(2);
-        KEY[17]->setpos_(desktopWidth/1.4,1.8*h);
-        scene->addItem(KEY[17]);
-
-        KEY[18]=new key(2);
-        KEY[18]->setpos_(desktopWidth/1.4,12.5*h);
-        scene->addItem(KEY[18]);
-
-        KEY[19]=new key(2);
-        KEY[19]->setpos_(desktopWidth/4.3,12.5*h);
-        scene->addItem(KEY[19]);
 
 
      }
@@ -755,103 +661,142 @@ void background::addkey(){
 
 
 
-    if(id==2){
-        qDebug()<<"...............hi................";
+    else if(id==3){
+        key *KEY[69];
+        int y=0;
+        int y0=(desktopHight/12);
+        for(int i=13;i<20;i++){
+            KEY[i]=new key();
+            KEY[i]->setpos_(2*(desktopWidth/20),y0+y);
+            y+=2*(desktopHight/15);
+           scene->addItem(KEY[i]);
+        }
+        y=0;
+        y0=4*(desktopHight/14);
+        for(int i=20;i<24;i++){
+            KEY[i]=new key();
+            KEY[i]->setpos_(3*(desktopWidth/20),y0+y);
+            y+=2*(desktopHight/15);
+           scene->addItem(KEY[i]);
+        }
+        y=0;
+        y0=4*(desktopHight/14);
+        for(int i=24;i<28;i++){
+            KEY[i]=new key();
+            KEY[i]->setpos_(4*(desktopWidth/20),y0+y);
+            y+=2*(desktopHight/15);
+           scene->addItem(KEY[i]);
+        }
+        y=0;
+        y0=4*(desktopHight/14);
+        for(int i=28;i<32;i++){
+            KEY[i]=new key();
+            KEY[i]->setpos_(6*(desktopWidth/20),y0+y);
+            y+=2*(desktopHight/15);
+           scene->addItem(KEY[i]);
+        }
+        y=0;
+        y0=4*(desktopHight/14);
+        for(int i=32;i<36;i++){
+            KEY[i]=new key();
+            KEY[i]->setpos_(7*(desktopWidth/20),y0+y);
+            y+=2*(desktopHight/15);
+           scene->addItem(KEY[i]);
+        }
+        y=0;
+        y0=(desktopHight/12);
+       for(int i=0;i<7;i++){//7 to 13
+           KEY[i]=new key();
+           KEY[i]->setpos_(8*(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       y=0;
+       y0=(desktopHight/12);
+       for(int i=36;i<43;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_((desktopWidth/2)+(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       y=0;
+       y0=4*(desktopHight/14);
+       for(int i=43;i<47;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_((desktopWidth/2)+2*(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       y=0;
+       y0=4*(desktopHight/14);
+       for(int i=47;i<51;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_((desktopWidth/2)+4*(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       y=0;
+       y0=4*(desktopHight/14);
+       for(int i=51;i<55;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_((desktopWidth/2)+5*(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       y=0;
+       y0=4*(desktopHight/14);
+       for(int i=55;i<59;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_((desktopWidth/2)+7*(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       y=0;
+       y0=(desktopHight/12);
+       for(int i=59;i<66;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_((desktopWidth)-2*(desktopWidth/20),y0+y);
+           y+=2*(desktopHight/15);
+          scene->addItem(KEY[i]);
+       }
+       int x=0;
+       int x0=4*(desktopWidth/20);
+       for(int i=7;i<9;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_(x+x0,(desktopHight/12));
+           x+=2*(desktopWidth/20);
+          scene->addItem(KEY[i]);
+       }
+       x=0;
+       x0=4*(desktopWidth/20);
+       for(int i=9;i<11;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_(x+x0,desktopHight-(desktopHight/8));
+           x+=2*(desktopWidth/20);
+          scene->addItem(KEY[i]);
+       }
+       x=0;
+       x0=(desktopWidth/2)+3*(desktopWidth/20);
+       for(int i=11;i<13;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_(x+x0,desktopHight-(desktopHight/8));
+           x+=3*(desktopWidth/20);
+          scene->addItem(KEY[i]);
+       }
+       x=0;
+       x0=(desktopWidth/2)+2.5*(desktopWidth/20);
+       for(int i=66;i<69;i++){
+           KEY[i]=new key();
+           KEY[i]->setpos_(x+x0,(desktopHight/12));
+           x+=2*(desktopWidth/20);
+          scene->addItem(KEY[i]);
+       }
 
-        key *KEY[22];
-        KEY[1]=new key(2);
-        KEY[1]->setpos_(180,200);
-        scene->addItem(KEY[1]);
-
-
-        KEY[2]=new key(2);
-        KEY[2]->setpos_(450,200);
-        scene->addItem(KEY[2]);
-
-        KEY[3]=new key(2);
-        KEY[3]->setpos_(300,50);
-        scene->addItem(KEY[3]);
-
-        KEY[4]=new key(2);
-        KEY[4]->setpos_(500,450);
-        scene->addItem(KEY[4]);
-
-        KEY[5]=new key(2);
-        KEY[5]->setpos_(600,565);
-        scene->addItem(KEY[5]);
-
-        KEY[6]=new key(2);
-        KEY[6]->setpos_(800,600);
-        scene->addItem(KEY[6]);
-
-        KEY[7]=new key(2);
-        KEY[7]->setpos_(200,500);
-        scene->addItem(KEY[7]);
-
-        KEY[8]=new key(2);
-        KEY[8]->setpos_(120,600);
-        scene->addItem(KEY[8]);
-
-        KEY[9]=new key(2);
-        KEY[9]->setpos_(500,670);
-        scene->addItem(KEY[9]);
-
-        KEY[10]=new key(2);
-        KEY[10]->setpos_(800,270);
-        scene->addItem(KEY[10]);
-
-        KEY[11]=new key(2);
-        KEY[11]->setpos_(900,400);
-        scene->addItem(KEY[11]);
-
-        KEY[12]=new key(2);
-        KEY[12]->setpos_(1052,500);
-        scene->addItem(KEY[12]);
-
-        KEY[13]=new key(2);
-        KEY[13]->setpos_(1100,200);
-        scene->addItem(KEY[13]);
-
-        KEY[14]=new key(2);
-        KEY[14]->setpos_(1150,440);
-        scene->addItem(KEY[14]);
-
-        KEY[15]=new key(2);
-        KEY[15]->setpos_(1150,338);
-        scene->addItem(KEY[15]);
-
-        KEY[16]=new key(2);
-        KEY[16]->setpos_(1100,670);
-        scene->addItem(KEY[16]);
-
-        KEY[17]=new key(2);
-        KEY[17]->setpos_(300,670);
-        scene->addItem(KEY[17]);
-
-        KEY[18]=new key(2);
-        KEY[18]->setpos_(100,50);
-        scene->addItem(KEY[18]);
-
-        KEY[19]=new key(2);
-        KEY[19]->setpos_(800,50);
-        scene->addItem(KEY[19]);
-
-        KEY[20]=new key(2);
-        KEY[20]->setpos_(500,300);
-        scene->addItem(KEY[20]);
-
-        KEY[21]=new key(2);
-        KEY[21]->setpos_(1100,50);
-        scene->addItem(KEY[21]);
-
-
-     }
 
 
 
 
 
-    if(id==3){
 
     }
 
@@ -862,7 +807,6 @@ void background::adddestroyer(){
     if(id==1){
 
 
-
     }
 
     if(id==2){
@@ -870,8 +814,16 @@ void background::adddestroyer(){
 
     }
     if(id==3){
-        destroyer* destroyer1=new destroyer(desktopHight,desktopWidth);
+       horizontaldestroyer1 * destroyer1=new horizontaldestroyer1(3,2*(desktopWidth/20),desktopHight-(2*(desktopHight/15)));
         scene->addItem(destroyer1);
+        verticaldestroyer1 * destroyer2=new verticaldestroyer1(3,(desktopWidth/2)+(desktopWidth/20),(1*(desktopHight/15)));
+         scene->addItem(destroyer2);
+         verticaldestroyer1 * dest1=new verticaldestroyer1(3,(desktopWidth/2)-(desktopWidth/20),(1*(desktopHight/15)));
+          verticaldestroyer1 * dest=new verticaldestroyer1(3,(desktopWidth/2)-2*(desktopWidth/20),(1*(desktopHight/15)));
+         QThread * th = new QThread;
+         dest->moveToThread(th);
+         scene->addItem(dest);
+         scene->addItem(dest1);
 
     }
 
