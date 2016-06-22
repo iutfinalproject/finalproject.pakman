@@ -1,10 +1,6 @@
 
 #include "health.h"
 
-
-
-
-
 Health::Health(QGraphicsTextItem *parent):QGraphicsTextItem(parent)
 {
     //intiliaze Health to zero
@@ -19,17 +15,12 @@ Health::Health(QGraphicsTextItem *parent):QGraphicsTextItem(parent)
 
 }
 
-void Health::increase()
-{
-    health++;
-}
-
 void Health::decrease()
 {
     health--;
 }
 
-int Health::getHealth()
+int &Health::getHealth()
 {
     return health;
 }

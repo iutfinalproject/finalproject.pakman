@@ -5,7 +5,7 @@
 class player_1:public player{
     Q_OBJECT
 public:
-    explicit player_1(QGraphicsPixmapItem *parent2=0);
+    explicit player_1(int,int,QGraphicsPixmapItem *parent2=0);
 
 private slots:
     virtual void keyPressEvent(QKeyEvent *event);

@@ -22,7 +22,7 @@ void score::increase()
     Score++;
 }
 
-int score::getscore()
+int &score::getscore()
 {
     return Score;
 }

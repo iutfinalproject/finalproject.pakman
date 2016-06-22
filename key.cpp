@@ -9,12 +9,10 @@
 key::key(QGraphicsPixmapItem *parent):QObject(),QGraphicsPixmapItem(parent)
 {
     QDesktopWidget desktop;
+    flag=0;
 
     int desktopHight=desktop.geometry().height();
     int desktopWidth=desktop.geometry().width();
-
-    flag=1;
-
              key_img1=new QPixmap("://image/key1");
               key_img2=new QPixmap("://image/key2");
                key_img3=new QPixmap("://image/key3");
@@ -44,13 +42,16 @@ void key::setpos_(int x, int y)
 }
 
 void key::rotate_img()
+
 {
     flag++;
+
    if(flag==1){
          setPixmap(*key_img1);
     }
    if(flag==2){
          setPixmap(*key_img2);
+
     }
    if(flag==3){
          setPixmap(*key_img3);

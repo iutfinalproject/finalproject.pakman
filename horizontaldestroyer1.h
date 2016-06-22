@@ -12,7 +12,10 @@ public:
 
 
 public slots:
- void move();
+void move();
+private:
+ int flag=1;
+ int flag1;
 
 };
 

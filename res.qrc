@@ -1,13 +1,6 @@
 <RCC>
     <qresource prefix="/image">
-        <file>key1.png</file>
-        <file>key2.png</file>
-        <file>key3.png</file>
-        <file>key4.png</file>
-        <file>key5.png</file>
-        <file>key6.png</file>
-        <file>background2.png</file>
-        <file>background0.jpg</file>
+        <file>brick2.jpg</file>
         <file>d1.png</file>
         <file>d2.png</file>
         <file>d3.png</file>
@@ -24,14 +17,38 @@
         <file>d14.png</file>
         <file>d15.png</file>
         <file>d16.png</file>
-        <file>brick2.jpg</file>
-        <file>treasure1.png</file>
-        <file>treasure2.png</file>
-        <file>treasure3.png</file>
-        <file>treasure4.png</file>
-        <file>treasure5.png</file>
-        <file>treasure6.png</file>
-        <file>treasure7.png</file>
-        <file>treasure8.png</file>
+        <file>down1.png</file>
+        <file>down2.png</file>
+        <file>dv3.png</file>
+        <file>dv4.png</file>
+        <file>dv5.png</file>
+        <file>dv6.png</file>
+        <file>dv7.png</file>
+        <file>dv8.png</file>
+        <file>background2.png</file>
+        <file>dv1.png</file>
+        <file>dv2.png</file>
+        <file>key1.png</file>
+        <file>key2.png</file>
+        <file>key3.png</file>
+        <file>key4.png</file>
+        <file>key5.png</file>
+        <file>key6.png</file>
+        <file>scene3.jpg</file>
+        <file>brick3.jpg</file>
+        <file>up1.png</file>
+        <file>up2.png</file>
+        <file>up3.png</file>
+        <file>up4.png</file>
+        <file>left1.png</file>
+        <file>left2.png</file>
+        <file>left3.png</file>
+        <file>left4.png</file>
+        <file>right1.png</file>
+        <file>right2.png</file>
+        <file>right3.png</file>
+        <file>right4.png</file>
+        <file>down3.png</file>
+        <file>down4.png</file>
     </qresource>
 </RCC>

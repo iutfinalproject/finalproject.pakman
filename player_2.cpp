@@ -1,16 +1,19 @@
+
 #include"player_2.h"
 #include<QKeyEvent>
 #include<QDesktopWidget>
 
-player_2::player_2(QGraphicsPixmapItem *parent2):player(parent2)
-{
+player_2::player_2(int x_,int y_, QGraphicsPixmapItem *parent2):player(parent2)
+{   x=x_;
+    y=y_;
     player_img=new QPixmap("://image/down1.png");
        * player_img= player_img->scaled(x/12,y/14);
       setPixmap(*player_img);
       this->setPos(x/2.3,y/2);
-      y=y/7;
+      y=y/2;
       x=x/2.3;
 }
+
 
 void player_2::keyPressEvent(QKeyEvent *event)
 {
@@ -51,6 +54,7 @@ void player_2::keyPressEvent(QKeyEvent *event)
 
          getkey();
          destroyehuman();
+
         }
 
         if(event->key()==Qt::Key_X){
@@ -154,5 +158,3 @@ void player_2::keyPressEvent(QKeyEvent *event)
         getkey();
     destroyehuman();
 }
-
-

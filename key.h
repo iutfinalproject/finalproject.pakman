@@ -25,8 +25,7 @@ private:
      QPixmap*key_img4;
      QPixmap*key_img5;
      QPixmap*key_img6;
-
-     int flag;
+int flag;
 
 };
 

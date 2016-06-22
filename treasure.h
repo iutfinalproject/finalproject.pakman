@@ -1,6 +1,5 @@
 #ifndef TREASURE_H
 #define TREASURE_H
-
 #include <QObject>
 #include<QGraphicsPixmapItem>
 #include<QGraphicsItem>
@@ -27,15 +26,15 @@ public slots:
 private:
      QTimer *treasure_timer;
      QPixmap *treasure_img1;
-      QPixmap *treasure_img2;
-       QPixmap *treasure_img3;
-        QPixmap *treasure_img4;
-         QPixmap *treasure_img5;
-          QPixmap *treasure_img6;
-           QPixmap *treasure_img7;
-            QPixmap *treasure_img8;
-    QVector<QPair<int,int> > vec;
-    int flag;
+     QPixmap *treasure_img2;
+     QPixmap *treasure_img3;
+     QPixmap *treasure_img4;
+     QPixmap *treasure_img5;
+     QPixmap *treasure_img6;
+     QPixmap *treasure_img7;
+     QPixmap *treasure_img8;
+     QVector<QPair<int,int> > vec;
+     int flag;
 
 
 

@@ -1,12 +1,15 @@
+
 #include"player_1.h"
 
 #include<QDesktopWidget>
-player_1::player_1(QGraphicsPixmapItem *parent2):player(parent2)
+player_1::player_1( int x_, int y_,QGraphicsPixmapItem *parent2):player(parent2)
 {
+    x=x_;
+    y=y_;
     player_img=new QPixmap("://image/down1.png");
-       * player_img= player_img->scaled(x/12,y/14);
+      * player_img= player_img->scaled(x/12,y/14);
       setPixmap(*player_img);
-         this->setPos(x/2.3,y/7);
+      this->setPos(x/2.3,y/7);
       y=y/7;
       x=x/2.3;
 }
@@ -151,4 +154,7 @@ destroyehuman();
     }
     getkey();
 destroyehuman();
+if(event->key()==Qt::Key_Enter){
+    gettreasure();
+}
 }

@@ -5,8 +5,7 @@
 #include<QDebug>
 #include"brick.h"
 
-int flag=1;
-int flag1;
+
 
 horizontaldestroyer1::horizontaldestroyer1(int id,int firstx,int firsty,QGraphicsPixmapItem *parent):destroyer(id,firstx,firsty,parent)
 
@@ -63,6 +62,7 @@ void horizontaldestroyer1::move(){
 
         for(int i=0;i<colliding_item.size();i++){
             if(typeid (*(colliding_item[i]))==typeid(brick)){
+
                 if(x>x0){
                     flag1=1;
                     flag=0;
