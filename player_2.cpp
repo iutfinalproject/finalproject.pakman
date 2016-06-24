@@ -2,8 +2,9 @@
 #include"player_2.h"
 #include<QKeyEvent>
 #include<QDesktopWidget>
+#include"game.h"
 
-player_2::player_2(int x_,int y_, QGraphicsPixmapItem *parent2):player(parent2)
+player_2::player_2(int numberkey,int x_, int y_, QGraphicsPixmapItem *parent2):player(numberkey,parent2)
 {   x=x_;
     y=y_;
     player_img=new QPixmap("://image/down1.png");
@@ -12,6 +13,10 @@ player_2::player_2(int x_,int y_, QGraphicsPixmapItem *parent2):player(parent2)
       this->setPos(x/2.3,y/2);
       y=y/2;
       x=x/2.3;
+//      Game*game=new Game();
+//      connect (this ,SIGNAL(setstep1()),game,SLOT(ricive_set_step1));
+//      connect (this ,SIGNAL(setstep2()),game,SLOT(ricive_set_step2));
+//      connect (this ,SIGNAL(setstep3()),game,SLOT(ricive_set_step3));
 }
 
 
@@ -158,3 +163,23 @@ void player_2::keyPressEvent(QKeyEvent *event)
         getkey();
     destroyehuman();
 }
+void player_2::end_level1()
+{
+    emit this->setstep1();
+}
+
+void player_2::end_level2()
+{
+  emit this->setstep2();
+}
+
+void player_2::end_level3()
+{
+    emit this->setstep3();
+}
+
+void player_2::end_level4()
+{
+    emit this->setstep4();
+}
+

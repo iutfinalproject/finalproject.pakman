@@ -31,7 +31,8 @@ SOURCES += main.cpp \
     verticaldestroyer1.cpp \
     thread1.cpp \
     thread2.cpp \
-    thread3.cpp
+    thread3.cpp \
+    game.cpp
 
 HEADERS  += \
     background.h \
@@ -52,7 +53,8 @@ HEADERS  += \
     verticaldestroyer1.h \
     thread1.h \
     thread2.h \
-    thread3.h
+    thread3.h \
+    game.h
 
 RESOURCES += \
     res.qrc

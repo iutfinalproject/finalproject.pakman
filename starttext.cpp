@@ -12,7 +12,7 @@ starttext::starttext(QString seect_color,char* text,int size,QGraphicsTextItem *
     QColor color(seect_color);
     setDefaultTextColor(color);
     setFont(QFont("wenquanyi",size));
-    qDebug()<<"jhaskjlh";
+    qDebug()<<"i am in starttext";
 
 
 

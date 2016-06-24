@@ -1,4 +1,3 @@
-
 #include<QGraphicsScene>
 #include "brick.h"
 

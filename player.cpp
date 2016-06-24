@@ -10,8 +10,9 @@
 #include<QtCore>
 #include<QFile>
 #include<QMap>
+#include"game.h"
 
-player::player(QGraphicsPixmapItem *parent)
+player::player(int numberkey_,QGraphicsPixmapItem *parent)
 {
     QDesktopWidget desktop;
     y=desktop.geometry().height();
@@ -22,6 +23,12 @@ player::player(QGraphicsPixmapItem *parent)
         change_u=0;
         numberscore.getscore()=0;
         numberhealth.getHealth()=3;
+        numberkey=numberkey_;
+
+//        Game*game=new Game();
+//        connect (this ,SIGNAL(setstep1()),game,SLOT(ricive_set_step1));
+//        connect (this ,SIGNAL(setstep2()),game,SLOT(ricive_set_step2));
+//        connect (this ,SIGNAL(setstep3()),game,SLOT(ricive_set_step3));
 }
 
 bool player::accident()
@@ -41,6 +48,7 @@ bool player::accident()
     return false;
 
 }
+}
 
 void player::getkey()
 {
@@ -53,7 +61,6 @@ void player::getkey()
             numberscore.getscore()++;
             scene()->removeItem(colliding_item[i]);
             delete colliding_item[i];
-            //change_2();
             return;
         }
     }
@@ -89,3 +96,23 @@ void player::gettreasure()
         }
     }
 }
+//void player::end_level1()
+//{
+//    emit this->setstep1();
+//}
+
+//void player::end_level2()
+//{
+//  emit this->setstep2();
+//}
+
+//void player::end_level3()
+//{
+//    emit this->setstep3();
+//}
+
+//void player::end_level4()
+//{
+//    emit this->setstep4();
+//}
+

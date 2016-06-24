@@ -16,8 +16,9 @@ public:
 
 
 
-signals:
 
+signals:
+     void send_signal(int);
 public slots:
      void mousePressEvent(QGraphicsSceneMouseEvent *event);
 

@@ -1,8 +1,8 @@
 
 #include"player_1.h"
-
+#include"game.h"
 #include<QDesktopWidget>
-player_1::player_1( int x_, int y_,QGraphicsPixmapItem *parent2):player(parent2)
+player_1::player_1(int numberkey, int x_, int y_,QGraphicsPixmapItem *parent2):player(numberkey,parent2)
 {
     x=x_;
     y=y_;
@@ -12,6 +12,10 @@ player_1::player_1( int x_, int y_,QGraphicsPixmapItem *parent2):player(parent2)
       this->setPos(x/2.3,y/7);
       y=y/7;
       x=x/2.3;
+//      Game*game=new Game();
+//      connect (this ,SIGNAL(setstep1()),game,SLOT(ricive_set_step1));
+//      connect (this ,SIGNAL(setstep2()),game,SLOT(ricive_set_step2));
+//      connect (this ,SIGNAL(setstep3()),game,SLOT(ricive_set_step3));
 }
 void player_1::keyPressEvent(QKeyEvent *event)
 {
@@ -158,3 +162,24 @@ if(event->key()==Qt::Key_Enter){
     gettreasure();
 }
 }
+void player_1::end_level1()
+{
+    emit this->setstep1();
+}
+
+void player_1::end_level2()
+{
+  emit this->setstep2();
+}
+
+void player_1::end_level3()
+{
+    emit this->setstep3();
+}
+
+void player_1::end_level4()
+{
+    emit this->setstep4();
+}
+
+
