@@ -4,30 +4,20 @@
 #include <QGraphicsView>
 #include<QGraphicsScene>
 #include<QDesktopWidget>
-#include<qdebug.h>
-#include"background.h"
 #include"player.h"
 #include"key.h"
 #include"brick.h"
-#include"background.h"
 #include"player_1.h"
 #include"player_2.h"
-#include<QDesktopWidget>
-#include "background.h"
-#include<QGraphicsScene>
-#include "brick.h"
 #include"bridge.h"
 #include<QDebug>
-#include"key.h"
 #include"treasure.h"
 #include"verticaldestroyer1.h"
 #include"horizontaldestroyer1.h"
 #include"startpage.h"
 #include"score.h"
 #include"health.h"
-#include"starttext.h"
-#include"player_1.h"
-#include"player_2.h"
+#include"textofbutton.h"
 #include"selection_key.h"
 #include<QString>
 class Game:public QObject {
@@ -63,6 +53,7 @@ public slots:
     void ricive_set_step2();
     void ricive_set_step3();
     void ricive_set_step4();
+    void keyPressEvent(QKeyEvent *event);
 signals:
      void send_calculate1();
      void send_calculate2();

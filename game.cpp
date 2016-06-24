@@ -1,8 +1,11 @@
 #include "game.h"
 #include"destroyer.h"
 #include"startpage.h"
+#include"thread1.h"
+#include"thread2.h"
+#include"thread3.h"
+#include<QThread>
 QGraphicsView* Game::view=0;
-//QGraphicsScene* Game::scene=0;
 Game::Game(QWidget *parent)
 {
     view=new QGraphicsView();
@@ -34,20 +37,10 @@ Game::Game(QWidget *parent)
 
 
 
-
-
-//    scene->setSceneRect(0,0,desktopWidth,desktopHight);
-//    QImage background2(":/image/background2.png");
-//    scene->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
-//    background *mybackground=new background(0,scene,0);
-//    mybackground->page_of_start();
-
-
 }
-
+//*********************************************
 void Game::start_page()
 {
-  //  _background=new background(0,scene,0);
 
     QDesktopWidget desktop;
     int desktopHight=desktop.geometry().height();
@@ -56,8 +49,6 @@ void Game::start_page()
     scene->setSceneRect(0,0,desktopWidth,desktopHight);
     QImage background2(":/image/background2.png");
     scene->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
-   // background *mybackground=new background(0,scene,0);
-  //  _background->page_of_start();
 
 
 
@@ -70,7 +61,7 @@ void Game::start_page()
    newpage2->setPos(100,100);
    scene->addItem(newpage2);
    QString color="blue";
-   starttext*new_start_text=new starttext(color,"Pac Man FRZ",30);
+   textofbutton*new_start_text=new textofbutton(color,"Pac Man FRZ",30);
    scene->addItem(new_start_text);
    new_start_text->setPos(new_start_text->x(),new_start_text->y()+25);
 
@@ -78,7 +69,7 @@ void Game::start_page()
    scene->addItem(new_key);
    new_key->setPos(100,700);
    QString color_="black";
-   starttext*close_text=new starttext(color_,"close",16);
+   textofbutton*close_text=new textofbutton(color_,"close",16);
    scene->addItem(close_text);
    close_text->setPos(100,700);
 
@@ -88,20 +79,24 @@ void Game::start_page()
    scene->addItem(start_key);
    start_key->setPos(10,700);
   // QString color_="black";
-   starttext*start_text=new starttext(color_,"start",16);
+   textofbutton*start_text=new textofbutton(color_,"start",16);
    scene->addItem(start_text);
    start_text->setPos(10,700);
 
-   connect(start_key,SIGNAL(send_signal(int)),this,SLOT(ricive_set_step1()));
+   connect(start_key,SIGNAL(send_signal(int)),this,SLOT(ricive_set_step2()));
 
 
   view->setScene(scene);
 
 }
-
+//*************************************************
 void Game::ricive_set_step1()
 {
-
+    QDesktopWidget desktop;
+    desktopHight=desktop.geometry().height();
+    desktopWidth=desktop.geometry().width();
+    int w=desktopWidth/20.6;
+    int h=desktopHight/15;
     scene->clear();
 
     scene->setSceneRect(0,0,desktopWidth,desktopHight);
@@ -355,27 +350,14 @@ void Game::ricive_set_step1()
 
 
 
-    player11_->setFlag(QGraphicsItem::ItemIsFocusable);
-    player11_->setFocus();
-    scene->addItem(player11_);
-    qDebug()<<"i am in player1 in background";
 
-
-       player21_->setFlag(QGraphicsItem::ItemIsFocusable);
-       player21_->setFocus();
-       scene->addItem(player21_);
-
-       if(player11_->emtiaz+player21_->emtiaz==19){
-           emit this->send_calculate1();
-       }
-
-
-
-    QDesktopWidget desktop;
-    desktopHight=desktop.geometry().height();
-    desktopWidth=desktop.geometry().width();
-    int w=desktopWidth/20.6;
-    int h=desktopHight/15;
+//*******************thread1***********************
+    QThread mykey;
+           thread1 myk;
+           myk.dowork(mykey);
+           myk.moveToThread(&mykey);
+           mykey.start(QThread::LowestPriority);
+//********************addkey************************
  key *KEY[20];
  KEY[1]=new key();
  KEY[1]->setpos_(w+4,desktopHight/1.75);
@@ -453,63 +435,32 @@ void Game::ricive_set_step1()
  KEY[19]=new key();
  KEY[19]->setpos_(desktopWidth/4.3,12.5*h);
  scene->addItem(KEY[19]);
+  view->setScene(scene);
+//*******************addplayer****************
+  player11_->setFlag(QGraphicsItem::ItemIsFocusable);
+  player11_->setFocus();
+  scene->addItem(player11_);
+  qDebug()<<"i am in player1 in background";
 
 
+     player21_->setFlag(QGraphicsItem::ItemIsFocusable);
+     player21_->setFocus();
+     scene->addItem(player21_);
 
-    //qDebug()<<"i am in set step one in game";
-   // int select_page=0;
-    /*QDesktopWidget desktop;
-    int desktopHight=desktop.geometry().height();
-    int desktopWidth=desktop.geometry().width();*/
+     if(player11_->emtiaz+player21_->emtiaz==19){
+         mykey.exit(0);
+         //mydes.exit(0);
+         emit this->send_calculate1();
+     }
 
+  //***************adddestroyer1*****************
 
-    view->setScene(scene);
 }
 
 void Game::ricive_set_step2()
 {
-    qDebug()<<"i am in set step two in game";
 
-
-    //    scene2->setSceneRect(0,0,desktopWidth,desktopHight);
-    //    QImage background2(":/image/background2.png");
-    //    scene2->setBackgroundBrush(background2.scaled(desktopWidth,desktopHight));
-    //    background mybackground(select_page,0,scene2,2);
-    //    mybackground.addbrick();
-    //    QThread myt;
-    //    my_thread ob(scene2);
-    // mybackground.addkey();
-    //    ob.dowork(myt);
-    //    ob.moveToThread(&myt);
-
-    //    myt.start();
-
-    //   // mybackground.adddestroyer();
-
-    //    mybackground.addscore();
-    //    mybackground.addHealth();
-    //    mybackground.addtreasure();
-    //    mybackground.addplayer();
-    //    view->setScene(scene2);
-    treasure* Treasure1=new treasure();
-     Treasure1->setpos_(510,200);
-     scene->addItem(Treasure1);
-
-     qDebug()<<"i am in player2 in background";
-
-       player12_->setFlag(QGraphicsItem::ItemIsFocusable);
-       player12_->setFocus();
-       scene->addItem(player12_);
-
-
-          player22_->setFlag(QGraphicsItem::ItemIsFocusable);
-          player22_->setFocus();
-          scene->addItem(player22_);
-          if(player12_->emtiaz+player22_->emtiaz==22){
-              emit this->send_calculate2();
-          }
-
-    qDebug()<<"i am brick";
+//**********************addbrick2**********************
        brick * brick_y[21];
           float y =0;
           for(int i=0;i<21;i++){
@@ -718,7 +669,12 @@ void Game::ricive_set_step2()
              scene->addItem(brick_midlle15[i]);
           }
 
-
+//******************addkey2************************************
+          QThread mykey;
+                 thread1 myk;
+                 myk.dowork(mykey);
+                 myk.moveToThread(&mykey);
+                 mykey.start(QThread::LowestPriority);
              key *KEY[22];
                KEY[1]=new key();
                KEY[1]->setpos_((desktopWidth/20)*2.75,desktopHight-(desktopHight/15)*10);
@@ -804,8 +760,12 @@ void Game::ricive_set_step2()
               KEY[21]=new key();
               KEY[21]->setpos_(1100,50);
               scene->addItem(KEY[21]);
-
-
+//*********************adddestroyer2****************************
+              QThread mydes;
+              thread2 myd;
+              myd.dowork(mydes);
+              myd.moveToThread(&mydes);
+              mydes.start(QThread::HighestPriority);
               horizontaldestroyer1 * destroyer1=new horizontaldestroyer1(2,2*(desktopWidth/20),desktopHight-(2*(desktopHight/15)));
                 scene->addItem(destroyer1);
 
@@ -824,41 +784,34 @@ void Game::ricive_set_step2()
                     verticaldestroyer1 * destroyer6=new verticaldestroyer1(2,1*(desktopWidth/20),(1*(desktopHight/15)));
                      scene->addItem(destroyer6);
 
+                     //*********************addplayer2***********************
+                            player12_->setFlag(QGraphicsItem::ItemIsFocusable);
+                            player12_->setFocus();
+                            scene->addItem(player12_);
 
 
-
-
-
-
-
-
-
-
+                               player22_->setFlag(QGraphicsItem::ItemIsFocusable);
+                               player22_->setFocus();
+                               scene->addItem(player22_);
+                               if(player12_->emtiaz+player22_->emtiaz==22){
+                                   mykey.exit(0);
+                                   mydes.exit(0);
+                                  emit this->send_calculate2();
+                               }
 }
 
 void Game::ricive_set_step3()
 {
-    qDebug()<<"i am set step3";
+
     QDesktopWidget desktop;
     int desktopHight=desktop.geometry().height();
     int desktopWidth=desktop.geometry().width();
     scene->setSceneRect(0,0,desktopWidth,desktopHight);
     QImage background3(":/image/background2.png");
-    qDebug()<<"i am in player3 in background";
-
-      player13_->setFlag(QGraphicsItem::ItemIsFocusable);
-      player13_->setFocus();
-      scene->addItem(player13_);
-
-
-         player23_->setFlag(QGraphicsItem::ItemIsFocusable);
-         player23_->setFocus();
-         scene->addItem(player23_);
-         if(player13_->emtiaz+player23_->emtiaz==69){
-             emit this->send_calculate3();
-         }
 
     scene->setBackgroundBrush(background3.scaled(desktopWidth,desktopHight));
+//***************************addbrick3**********************************
+    {
     brick* rowbrick[20];
        int x=0;
        for(int i=0;i<20;i++){
@@ -1017,14 +970,16 @@ void Game::ricive_set_step3()
            bridge* bridge3=new bridge(desktopHight,desktopWidth);
            bridge3->setPos((3*(desktopWidth/4))-(0.5*(desktopWidth/20)),11*((desktopHight)/15));
            scene->addItem(bridge3);
+}
 
+//*****************addkey3********************************
 
+   QThread mykey;
+   thread1 myk;
+   myk.dowork(mykey);
+   myk.moveToThread(&mykey);
+   mykey.start(QThread::LowestPriority);
 
-
-    // background* mybackground=new background(0,scene,3);
-
-
-{
     key *KEY[69];
     int y=0;
     int y0=(desktopHight/12);
@@ -1154,9 +1109,13 @@ void Game::ricive_set_step3()
        x+=2*(desktopWidth/20);
       scene->addItem(KEY[i]);
    }
-    }
 
-
+//*********************adddestroyer3**********************************
+      QThread mydes;
+      thread2 myd;
+      myd.dowork(mydes);
+      myd.moveToThread(&mydes);
+      mydes.start(QThread::HighestPriority);
       horizontaldestroyer1 * destroyer1=new horizontaldestroyer1(2,2*(desktopWidth/20),desktopHight-(2*(desktopHight/15)));
        scene->addItem(destroyer1);
        verticaldestroyer1 * destroyer2=new verticaldestroyer1(2,(desktopWidth/2)+(desktopWidth/20),(1*(desktopHight/15)));
@@ -1166,12 +1125,49 @@ void Game::ricive_set_step3()
          horizontaldestroyer1 * destroyer4=new horizontaldestroyer1(2,1*(desktopWidth/20),(1*(desktopHight/15)));
           scene->addItem(destroyer4);
 
+
+          //*****************addplayer3************************
+          player13_->setFlag(QGraphicsItem::ItemIsFocusable);
+              player13_->setFocus();
+              scene->addItem(player13_);
+
+
+                 player23_->setFlag(QGraphicsItem::ItemIsFocusable);
+                 player23_->setFocus();
+                 scene->addItem(player23_);
+                 if(player13_->emtiaz+player23_->emtiaz==69){
+                     mykey.exit(0);
+                     mydes.exit(0);
+                     emit this->send_calculate3();
+                 }
+
+
+
+
+
            view->setScene(scene);
-
 }
-
 void Game::ricive_set_step4()
 {
+}
+
+void Game::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key()==Qt::Key_Escape){
+
+
+        QDesktopWidget desktop;
+        int desktopHight=desktop.geometry().height();
+        int desktopWidth=desktop.geometry().width();
+         qDebug()<<"i am startpage";
+        scene->setSceneRect(0,0,desktopWidth,desktopHight);
+        QImage background2(":/image/background2.png");
+        scene->setBackgroundBrush(background2.scaled(desktopWidth,desktopHigh);
+
+      view->setScene(scene);
+
+
+    }
 }
 
 

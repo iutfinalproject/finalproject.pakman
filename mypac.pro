@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    background.cpp \
     brick.cpp \
     bridge.cpp \
     destroyer.cpp \
@@ -26,16 +25,15 @@ SOURCES += main.cpp \
     score.cpp \
     selection_key.cpp \
     startpage.cpp \
-    starttext.cpp \
     treasure.cpp \
     verticaldestroyer1.cpp \
     thread1.cpp \
     thread2.cpp \
     thread3.cpp \
-    game.cpp
+    game.cpp \
+    textofbutton.cpp
 
 HEADERS  += \
-    background.h \
     brick.h \
     bridge.h \
     destroyer.h \
@@ -48,13 +46,13 @@ HEADERS  += \
     score.h \
     selection_key.h \
     startpage.h \
-    starttext.h \
     treasure.h \
     verticaldestroyer1.h \
     thread1.h \
     thread2.h \
     thread3.h \
-    game.h
+    game.h \
+    textofbutton.h
 
 RESOURCES += \
     res.qrc
